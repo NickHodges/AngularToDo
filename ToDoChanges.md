@@ -55,3 +55,13 @@
 * Added `todo-data.service.ts`
 * Updated `app.module.ts` for HTTP modules
 * Inject `ToDoDataService`
+
+# Step 6
+
+### Lessons
+* Accessing API and displaying data
+
+### Changes
+* Update to the all-tasks component
+* Added `ngIf` and `ngFor` directives
+* 
