@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  padding-top: 70px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
