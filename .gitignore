@@ -33,6 +33,10 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+*.bak
+# Don't check in *.js files as they are compiler output
+*.js
+
 
 # System Files
 .DS_Store
