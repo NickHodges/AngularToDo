@@ -42,3 +42,15 @@
 * Added components for each route
 * Updated imports in `app.module.ts`
 * Updated `styles.css` to set container styles
+
+# Step 5
+
+### Lesson
+* Add `todo` class  
+* Add Todo Service to access API
+
+### Changes
+* Added `todos.ts`
+* Added `todo-data.service.ts`
+* Updated `app.module.ts` for HTTP modules
+* Inject `ToDoDataService`
