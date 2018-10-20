@@ -48,6 +48,7 @@
 ### Lesson
 * Add `todo` class  
 * Add Todo Service to access API
+* Dependency Injection of services
 
 ### Changes
 * Added `todos.ts`
