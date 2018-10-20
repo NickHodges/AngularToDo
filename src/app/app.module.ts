@@ -5,8 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
 })
