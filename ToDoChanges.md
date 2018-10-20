@@ -60,6 +60,7 @@
 
 ### Lessons
 * Accessing API and displaying data
+* Databinding in HTML file
 
 ### Changes
 * Update to the all-tasks component
