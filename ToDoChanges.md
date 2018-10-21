@@ -82,18 +82,26 @@
 ### Lessons 
 * Add a component to add Todos
 * Display component in Todo checklist page
-* Add EventEmitter to notify lists that things have changed
+* Add `EventEmitter` to notify lists that things have changed
 
 ### Changes
-* Added AddToDoComponent, with code to input and add
-* Add EventEmitter
-* Add FormsModule to NgModule imports
+* Added `AddToDoComponent`, with code to input and add
+* Add `EventEmitter`
+* Add `FormsModule` to `NgModule` imports
 
 # Step 9
 
-### Lession
+### Lesson
 * Add ability to mark a Todo as done
 
 ### Changes
 * Added checkbox to mark item complete
-* Added makeComplete method to update Todo
+* Added `makeComplete` method to update Todo
+
+# Step 10
+
+### Lesson
+* Add abilty to mark complete Todo as uncomplete.
+
+### Changes
+* Add `onclick`
