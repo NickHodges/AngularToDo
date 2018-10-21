@@ -105,3 +105,12 @@
 
 ### Changes
 * Add `onclick`
+
+# Step 11
+
+### Lesson
+* Delete a Todo
+
+### Changes
+* Added big red 'X' to delete a Todo item
+* Add `removeTodo` to delete a todo entirely
