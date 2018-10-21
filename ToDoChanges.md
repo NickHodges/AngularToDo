@@ -114,3 +114,12 @@
 ### Changes
 * Added big red 'X' to delete a Todo item
 * Add `removeTodo` to delete a todo entirely
+
+# Step 12
+
+### Lesson
+* Add ability to edit an incomplete todo in place
+
+### Changes
+* update HTML to add an input box when you click on an item
+* Code to update the text of an incomplete todo
