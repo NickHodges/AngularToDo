@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../todo';
+import { TodoDataService } from '../todo-data.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  constructor() {}
+  constructor(private todoDataService: TodoDataService) {}
 
-  ngOnInit() {}
+  completetodos: Array<Todo>;
+  incompletetodos: Array<Todo>;
+
+  ngOnInit() {
+    this.RefreshTodos();
+  }
+
+  completedTodos() {
+    this.todoDataService
+      .completedTodos()
+      .subscribe(todos => (this.completetodos = todos));
+  }
+
+  incompletedToDos() {
+    this.todoDataService
+      .incompletedTodos()
+      .subscribe(todos => (this.incompletetodos = todos));
+  }
+
+  private RefreshTodos() {
+    this.completedTodos();
+    this.incompletedToDos();
+  }
 }

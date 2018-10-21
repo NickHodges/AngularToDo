@@ -11,4 +11,18 @@ export class TodoDataService {
   getAllTodos(): Observable<Array<Todo>> {
     return this.aHttpService.get<Array<Todo>>(`http://localhost:3000/todos`);
   }
+
+  // Get all completed tasks
+  completedTodos(): Observable<Array<Todo>> {
+    return this.aHttpService.get<Array<Todo>>(
+      `http://localhost:3000/todos?complete=true`
+    );
+  }
+
+  // Get all incomplete tasks
+  incompletedTodos(): Observable<Array<Todo>> {
+    return this.aHttpService.get<Array<Todo>>(
+      `http://localhost:3000/todos?complete=false`
+    );
+  }
 }
