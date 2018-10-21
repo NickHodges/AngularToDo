@@ -7,21 +7,21 @@
       "id": 12
     },
     {
-      "complete": true,
+      "complete": false,
       "editMode": false,
       "title": "Drive kids to school",
       "id": 15
     },
     {
-      "complete": true,
+      "complete": false,
       "editMode": false,
       "title": "Feed the dog",
       "id": 18
     },
     {
-      "complete": false,
+      "complete": true,
       "editMode": false,
-      "title": "Get taxes done",
+      "title": "Buy present for Mom",
       "id": 19
     }
   ]

@@ -78,5 +78,4 @@ export class TodoListComponent implements OnInit {
     todo.editMode = false;
     this.todoDataService.updateTodoById(todo.id, todo);
   }
-
 }
