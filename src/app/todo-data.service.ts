@@ -25,4 +25,9 @@ export class TodoDataService {
       `http://localhost:3000/todos?complete=false`
     );
   }
+
+  // Create/Post todo
+  addTodo(todo: Todo): Observable<Todo> {
+    return this.aHttpService.post<Todo>(`http://localhost:3000/todos`, todo);
+  }
 }

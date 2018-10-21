@@ -33,4 +33,10 @@ export class TodoListComponent implements OnInit {
     this.completedTodos();
     this.incompletedToDos();
   }
+
+  onAddTodo(todo: Todo) {
+    this.todoDataService.addTodo(todo).subscribe(val => {
+      this.incompletetodos.push(val);
+    });
+  }
 }
