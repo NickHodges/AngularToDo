@@ -10,6 +10,7 @@
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
           <input (click)="makeComplete(todo)" type="checkbox" class="checkbox">
           {{todo.title}}
+          <button (click)="removeTodo(todo)" class="btn btn-danger delete-todo">&#x2715;</button>
         </li>
       </ul>
     </div>

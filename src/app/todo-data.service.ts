@@ -44,4 +44,9 @@ export class TodoDataService {
       newTodo
     );
   }
+
+  // Delete todo
+  deleteTodoById(id: number): Observable<Todo> {
+    return this.aHttpService.delete<Todo>(`http://localhost:3000/todos/${id}`);
+  }
 }

@@ -42,7 +42,9 @@ export class TodoListComponent implements OnInit {
 
   makeComplete(todo) {
     this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-      const index = this.completetodos.findIndex(thetodo => thetodo.id === val.id);
+      const index = this.completetodos.findIndex(
+        thetodo => thetodo.id === val.id
+      );
       this.incompletetodos.splice(index, 1);
       this.completetodos.push(val);
     });
@@ -50,9 +52,20 @@ export class TodoListComponent implements OnInit {
 
   makeIncomplete(todo) {
     this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-      const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
+      const index = this.incompletetodos.findIndex(
+        thetodo => thetodo.id === val.id
+      );
       this.completetodos.splice(index, 1);
       this.incompletetodos.push(val);
+    });
+  }
+
+  removeTodo(todo) {
+    this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
+      const index = this.incompletetodos.findIndex(
+        thetodo => thetodo.id === val.id
+      );
+      this.incompletetodos.splice(index, 1);
     });
   }
 }
