@@ -68,4 +68,15 @@ export class TodoListComponent implements OnInit {
       this.incompletetodos.splice(index, 1);
     });
   }
+
+  editTodo(todo: Todo) {
+    todo.editMode = true;
+  }
+
+  updateTodo(todo: Todo, editInput) {
+    todo.title = editInput.value;
+    todo.editMode = false;
+    this.todoDataService.updateTodoById(todo.id, todo);
+  }
+
 }

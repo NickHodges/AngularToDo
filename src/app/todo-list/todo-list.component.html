@@ -9,7 +9,11 @@
       <ul class="list-group">
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
           <input (click)="makeComplete(todo)" type="checkbox" class="checkbox">
-          {{todo.title}}
+          <span (click)="editTodo(todo)" class="todo-title">
+            {{todo.title}}
+            <input #editInput *ngIf="todo.editMode" [value]="todo.title" (keyup.enter)="updateTodo(todo, editInput)" class="edit-todo"
+              type="text">
+          </span>
           <button (click)="removeTodo(todo)" class="btn btn-danger delete-todo">&#x2715;</button>
         </li>
       </ul>
