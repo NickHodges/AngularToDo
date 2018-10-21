@@ -30,4 +30,18 @@ export class TodoDataService {
   addTodo(todo: Todo): Observable<Todo> {
     return this.aHttpService.post<Todo>(`http://localhost:3000/todos`, todo);
   }
+
+  // Complete function
+  toggleTodoComplete(todo: Todo): Observable<Todo> {
+    todo.complete = !todo.complete;
+    return this.updateTodoById(todo.id, todo);
+  }
+
+  // Update/Put todo
+  updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
+    return this.aHttpService.put<Todo>(
+      `http://localhost:3000/todos/${id}`,
+      newTodo
+    );
+  }
 }

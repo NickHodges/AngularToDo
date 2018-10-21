@@ -8,6 +8,7 @@
       <hr>
       <ul class="list-group">
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
+          <input (click)="makeComplete(todo)" type="checkbox" class="checkbox">
           {{todo.title}}
         </li>
       </ul>
