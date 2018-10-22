@@ -53,9 +53,12 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  // Added for Step 10
   makeIncomplete(todo) {
     this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-      const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
+      const index = this.incompletetodos.findIndex(
+        thetodo => thetodo.id === val.id
+      );
       this.completetodos.splice(index, 1);
       this.incompletetodos.push(val);
     });
