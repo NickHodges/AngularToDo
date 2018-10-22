@@ -10,6 +10,7 @@ import { TodoDataService } from '../todo-data.service';
 export class TodoListComponent implements OnInit {
   constructor(private todoDataService: TodoDataService) {}
 
+  // Everything below is added for Step 7
   completetodos: Array<Todo>;
   incompletetodos: Array<Todo>;
 
@@ -34,12 +35,14 @@ export class TodoListComponent implements OnInit {
     this.incompletedToDos();
   }
 
+  // Added for Step 8
   onAddTodo(todo: Todo) {
     this.todoDataService.addTodo(todo).subscribe(val => {
       this.incompletetodos.push(val);
     });
   }
 
+  // Added for Step 9
   makeComplete(todo) {
     this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
       const index = this.completetodos.findIndex(
@@ -50,6 +53,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  // Added for Step 10
   makeIncomplete(todo) {
     this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
       const index = this.incompletetodos.findIndex(
@@ -60,6 +64,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  // Added for Step 11
   removeTodo(todo) {
     this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
       const index = this.incompletetodos.findIndex(

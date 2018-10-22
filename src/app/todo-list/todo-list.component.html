@@ -1,3 +1,4 @@
+<!-- Changed for Step 7 -->
 <div class="container">
   <app-add-todo class="app-add-todo" (addTodoEvent)="onAddTodo($event)"></app-add-todo>
   <div class="row">
@@ -8,12 +9,14 @@
       <hr>
       <ul class="list-group">
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
+          <!-- Checkbox added for Step 9 -->
           <input (click)="makeComplete(todo)" type="checkbox" class="checkbox">
           <span (click)="editTodo(todo)" class="todo-title">
             {{todo.title}}
-            <input #editInput *ngIf="todo.editMode" [value]="todo.title" (keyup.enter)="updateTodo(todo, editInput)" class="edit-todo"
-              type="text">
+            <input #editInput *ngIf="todo.editMode" [value]="todo.title" (keyup.enter)="updateTodo(todo, editInput)"
+              class="edit-todo" type="text">
           </span>
+          <!-- Added for Step 11 -->
           <button (click)="removeTodo(todo)" class="btn btn-danger delete-todo">&#x2715;</button>
         </li>
       </ul>
@@ -26,6 +29,7 @@
       <ul class="list-group">
         <li *ngFor="let todo of completetodos" class="list-group-item">
           <span class="todo-title">{{todo.title}}</span>
+          <!-- Added for Step 10 -->
           <span (click)="makeIncomplete(todo)" class="incomplete-todo">&#x21a2;</span>
         </li>
       </ul>
