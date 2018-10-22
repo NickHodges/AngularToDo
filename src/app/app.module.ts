@@ -17,19 +17,25 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 @NgModule({
   declarations: [
     AppComponent,
+    // Added in Step 3
     AboutComponent,
     TodoListComponent,
     NavbarComponent,
     AllTasksComponent,
-    AddTodoComponent
+    // Added in Step 8
+    AddTodoComponent,
+    // Added in Step 4
+    AllTasksComponent
   ],
   imports: [
     BrowserModule,
+    // Added for Step 5
     RouterModule.forRoot(routes),
     HttpModule,
     HttpClientModule,
     FormsModule
   ],
+  // Added for Step 5
   providers: [TodoDataService],
   bootstrap: [AppComponent]
 })

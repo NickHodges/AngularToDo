@@ -10,9 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class AllTasksComponent implements OnInit {
   constructor(private todoDataService: TodoDataService) {}
+  // Added for Step 6
   allTodos: Observable<Array<Todo>>;
 
   ngOnInit() {
+    // Added for Step 6
     this.allTodos = this.todoDataService.getAllTodos();
   }
 }
