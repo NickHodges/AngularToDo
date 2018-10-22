@@ -24,10 +24,12 @@ import { TodoDataService } from './todo-data.service';
   ],
   imports: [
     BrowserModule,
+    // Added for Step 5
     RouterModule.forRoot(routes),
     HttpModule,
     HttpClientModule
   ],
+  // Added for Step 5
   providers: [TodoDataService],
   bootstrap: [AppComponent]
 })
