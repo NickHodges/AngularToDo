@@ -15,17 +15,21 @@ import { TodoDataService } from './todo-data.service';
 @NgModule({
   declarations: [
     AppComponent,
+    // Added in Step 3
     AboutComponent,
     TodoListComponent,
     NavbarComponent,
+    // Added in Step 4
     AllTasksComponent
   ],
   imports: [
     BrowserModule,
+    // Added for Step 5
     RouterModule.forRoot(routes),
     HttpModule,
     HttpClientModule
   ],
+  // Added for Step 5
   providers: [TodoDataService],
   bootstrap: [AppComponent]
 })
