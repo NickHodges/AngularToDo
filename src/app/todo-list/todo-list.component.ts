@@ -64,6 +64,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  // Added for Step 11
   removeTodo(todo) {
     this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
       const index = this.incompletetodos.findIndex(
