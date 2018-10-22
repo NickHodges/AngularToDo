@@ -5,7 +5,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    // Changed in Step 3
+    NavbarComponent
+  ],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
