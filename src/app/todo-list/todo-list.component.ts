@@ -76,6 +76,11 @@ export class TodoListComponent implements OnInit {
   updateTodo(todo: Todo, editInput) {
     todo.title = editInput.value;
     todo.editMode = false;
-    this.todoDataService.updateTodoById(todo.id, todo);
+    this.todoDataService.updateTodoById(todo.id, todo).subscribe(val => {
+      const index = this.incompletetodos.findIndex(
+        thetodo => thetodo.id === val.id
+      );
+      this.incompletetodos[index] = todo;
+    });
   }
 }
