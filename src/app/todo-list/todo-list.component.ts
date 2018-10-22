@@ -74,10 +74,12 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  // Added for Step 12
   editTodo(todo: Todo) {
     todo.editMode = true;
   }
 
+  // Added for Step 12
   updateTodo(todo: Todo, editInput) {
     todo.title = editInput.value;
     todo.editMode = false;

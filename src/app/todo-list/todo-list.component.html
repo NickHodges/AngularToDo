@@ -11,6 +11,7 @@
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
           <!-- Checkbox added for Step 9 -->
           <input (click)="makeComplete(todo)" type="checkbox" class="checkbox">
+          <!-- Added for Step 12 -->
           <span (click)="editTodo(todo)" class="todo-title">
             {{todo.title}}
             <input #editInput *ngIf="todo.editMode" [value]="todo.title" (keyup.enter)="updateTodo(todo, editInput)"
