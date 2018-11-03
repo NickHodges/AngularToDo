@@ -36,6 +36,7 @@ testem.log
 *.bak
 # Don't check in *.js files as they are compiler output
 *.js
+*.pptx
 
 
 # System Files
