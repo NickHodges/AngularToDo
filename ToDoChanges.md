@@ -18,3 +18,15 @@
 ### Changes
 - Added db.json file
 
+# Step 3
+
+### Lesson
+- Add new component via `ng generate component NavBar`
+- Use Angular tag to make component appear
+
+### Changes
+* Added NavBar component
+  * Used Bootstrap component to build it
+  * Links are empty at this point
+* update app.module.ts to use NavBarComponent
+  * Put component name in `[declarations]` section
