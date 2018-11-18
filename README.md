@@ -1,27 +1,31 @@
 # PhillyCCTodo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+## Introduction
 
-## Development server
+This project was used at the Philly Code Camp "Angular 101" class. It was originally written for Angular 6, but has been updated to be used with Angular 7.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The class involved building a simple
 
-## Code scaffolding
+It demonstrates a number of Angular features, including:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Components
+- Modules
+- Routing
+- Databinding
+- Events
+- Reactive Forms
+- HTTP Services
+- Use of Observables
+- Directives
+- Validation
+- Custom Validation
+- Use of Bootstrap
+- Use of Angular Material
 
-## Build
+## Process
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The code is divided into 19 branches, ranging from Step1 to Step19.
 
-## Running unit tests
+Each branch has a "lesson", that is, a demonstration of some new feature. Thus, the todo application is slowly built and improved with each branch.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The document ToDoChanges.md describes each step and what new code has been added. There also comments in the code where new items were added, and thus on each step, you can search this pattern -- "Step X" -- to find new code for each level.
