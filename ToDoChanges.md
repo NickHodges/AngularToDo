@@ -91,7 +91,7 @@
 
 ## Step 8
 
-### Lessons
+### Lesson
 
 - Add a component to add Todos
 - Display component in Todo checklist page
@@ -105,7 +105,7 @@
 
 ## Step 9
 
-### Lession
+### Lesson
 
 - Add ability to mark a Todo as done
 
@@ -124,7 +124,6 @@
 
 - Add `onclick`
 
-
 ## Step 11
 
 ### Lesson
@@ -135,3 +134,27 @@
 
 - Added big red 'X' to delete a Todo item
 - Add `removeTodo` to delete a todo entirely
+
+### Lesson
+
+- Add ability to mark a Todo as done
+
+### Changes
+
+- Added checkbox to mark item complete
+- Added makeComplete method to update Todo
+
+## Step 10
+
+### Lesson
+
+- Add abilty to mark complete Todo as uncomplete.
+
+### Changes
+
+- Add `onclick`
+
+### Changes
+
+- Added checkbox to mark item complete
+- Added makeComplete method to update Todo
