@@ -1,24 +1,25 @@
-﻿# Step 1
+﻿# List of changes to the ToDo Application by step
 
-## Lesson
+## Step 1
+
+### Lesson
 
 - See the basic construction of an Angular application
 
-## Changes
+### Changes
 
 - Changed index.html to use Bootstrap
 - Added title
 - Changed to app.component.html to be basic template
 
-# Step 2
+## Step 2
 
-## Lesson
+### Lesson
 
 - Build a backend server with json-server
 - `npm -g install json-server`
 - Check functionality at `http://localhost:3000`
 
-## Changes
+### Changes
 
 - Added db.json file
-
