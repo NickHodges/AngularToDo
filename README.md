@@ -24,7 +24,7 @@ It demonstrates a number of Angular features, including:
 
 ## Process
 
-The code is divided into 19 branches, ranging from Step1 to Step19.
+The code is divided into 20 branches, ranging from Step1 to Step20.
 
 Each branch has a "lesson", that is, a demonstration of some new feature. Thus, the todo application is slowly built and improved with each branch.
 
