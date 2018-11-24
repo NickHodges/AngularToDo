@@ -20,11 +20,15 @@
 - `npm -g install json-server`
 - Check functionality at `http://localhost:3000`
 
+## Step 3
+
 ### Changes
 
 ### Lesson
 
 - Adding components and routing for basic page functionality
+
+## Step 4
 
 ### Changes
 
