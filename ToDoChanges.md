@@ -88,10 +88,17 @@
 
 - Added completed/incompleted methods to Todo page and to DataService
 - Updated HTML to display Todos
+<<<<<<< HEAD
 
 ## Step 8
 
 ### Lessons
+
+=======
+
+## Step 8
+
+### Lesson
 
 - Add a component to add Todos
 - Display component in Todo checklist page
@@ -105,7 +112,7 @@
 
 ## Step 9
 
-### Lession
+### Lesson
 
 - Add ability to mark a Todo as done
 
@@ -123,3 +130,8 @@
 ### Changes
 
 - Add `onclick`
+
+### Changes
+
+- Added checkbox to mark item complete
+- Added makeComplete method to update Todo
