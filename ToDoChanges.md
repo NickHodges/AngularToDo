@@ -1,10 +1,12 @@
-﻿# Step 1
+﻿# List of changes to the ToDo Application by step
 
-## Lesson
+## Step 1
+
+### Lesson
 
 - See the basic construction of an Angular application
 
-## Changes
+### Changes
 
 - Changed index.html to use Bootstrap
 - Added title
