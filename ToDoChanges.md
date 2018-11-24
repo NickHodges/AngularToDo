@@ -1,10 +1,11 @@
 ﻿# Step 1
 
-### Lesson
+## Lesson
+
 - See the basic construction of an Angular application
 
-### Changes
+## Changes
+
 - Changed index.html to use Bootstrap
 - Added title
 - Changed to app.component.html to be basic template
-
