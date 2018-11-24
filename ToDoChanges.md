@@ -56,6 +56,7 @@
 - Add `todo` class
 - Add Todo Service to access API
 - Dependency Injection of services
+  <<<<<<< HEAD
 
 ### Changes
 
@@ -93,6 +94,46 @@
 
 ### Lessons
 
+=======
+
+### Changes
+
+- Added `todos.ts`
+- Added `todo-data.service.ts`
+- Updated `app.module.ts` for HTTP modules
+- Inject `ToDoDataService`
+
+## Step 6
+
+### Lessons
+
+- Accessing API and displaying data
+- Databinding in HTML file
+- Observables
+- async
+
+### Changes
+
+- Update to the all-tasks component
+- Added `ngIf` and `ngFor` directives
+
+## Step 7
+
+### Lessons
+
+- Display Todos by complete/incomplete
+
+### Changes
+
+- Added completed/incompleted methods to Todo page and to DataService
+- Updated HTML to display Todos
+
+## Step 8
+
+### Lesson
+
+> > > > > > > Step11
+
 - Add a component to add Todos
 - Display component in Todo checklist page
 - Add EventEmitter to notify lists that things have changed
@@ -105,7 +146,7 @@
 
 ## Step 9
 
-### Lession
+### Lesson
 
 - Add ability to mark a Todo as done
 
@@ -124,7 +165,6 @@
 
 - Add `onclick`
 
-
 ## Step 11
 
 ### Lesson
@@ -135,7 +175,6 @@
 
 - Added big red 'X' to delete a Todo item
 - Add `removeTodo` to delete a todo entirely
-
 
 ## Step 12
 
