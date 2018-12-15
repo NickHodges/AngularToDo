@@ -20,10 +20,6 @@
 - `npm -g install json-server`
 - Check functionality at `http://localhost:3000`
 
-### Changes
-
-- Added db.json file
-
 ## Step 3
 
 ### Lesson
@@ -52,3 +48,19 @@
 - Added components for each route
 - Updated imports in `app.module.ts`
 - Updated `styles.css` to set container styles
+
+## Step 5
+
+### Lesson
+
+- Add `todo` class
+- Add Todo Service to access API
+- Dependency Injection of services
+
+### Changes
+
+- Added `todos.ts`
+- Added `todo-data.service.ts`
+- Updated `app.module.ts` for HTTP modules
+- Inject `ToDoDataService`
+- Added db.json file
