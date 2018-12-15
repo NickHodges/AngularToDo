@@ -88,3 +88,17 @@
 
 - Added completed/incompleted methods to Todo page and to DataService
 - Updated HTML to display Todos
+
+## Step 8
+
+### Lessons
+
+- Add a component to add Todos
+- Display component in Todo checklist page
+- Add EventEmitter to notify lists that things have changed
+
+### Changes
+
+- Added AddToDoComponent, with code to input and add
+- Add EventEmitter
+- Add FormsModule to NgModule imports
