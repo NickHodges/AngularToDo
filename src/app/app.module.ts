@@ -12,12 +12,12 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    // Added in Step 3
+    // Added in Step 4
     AboutComponent,
     TodoListComponent,
-    NavbarComponent,
-    // Added in Step 4
-    AllTasksComponent
+    AllTasksComponent,
+    // Added in Step 3
+     NavbarComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],

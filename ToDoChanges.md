@@ -39,7 +39,7 @@
 - Update app.module.ts to use NavBarComponent
 - Put component name in `[declarations]` section
 
-# Step 4
+## Step 4
 
 ### Lesson
 
