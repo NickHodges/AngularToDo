@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
+=======
+    // Added in Step 3
+    NavbarComponent
+>>>>>>> Step3
   ],
   imports: [BrowserModule],
   providers: [],
