@@ -23,6 +23,8 @@
       <ul class="list-group">
         <li *ngFor="let todo of completetodos" class="list-group-item">
           <span class="todo-title">{{todo.title}}</span>
+          <!-- Added for Step 10 -->
+          <span (click)="makeIncomplete(todo)" class="incomplete-todo">&#x21a2;</span>
         </li>
       </ul>
     </div>
