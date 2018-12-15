@@ -63,4 +63,16 @@
 - Added `todo-data.service.ts`
 - Updated `app.module.ts` for HTTP modules
 - Inject `ToDoDataService`
-- Added db.json file
+
+## Step 6
+
+### Lessons
+
+- Accessing API and displaying data
+- Databinding in HTML file
+- async
+
+### Changes
+
+- Update to the all-tasks component
+- Added `ngIf` and `ngFor` directives
