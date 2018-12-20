@@ -8,8 +8,17 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     // Added in Step 3
     NavbarComponent
+=======
+    // Added in Step 4
+    AboutComponent,
+    TodoListComponent,
+    AllTasksComponent,
+    // Added in Step 3
+     NavbarComponent,
+>>>>>>> Step4
   ],
   imports: [BrowserModule],
   providers: [],
