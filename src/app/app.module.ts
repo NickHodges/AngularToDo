@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { routes } from './app.routes';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
     AllTasksComponent,
     TodoListComponent
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent]
 })
