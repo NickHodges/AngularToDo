@@ -1,9 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
+=======
+import { routes } from './app.routes';
+import { AllTasksComponent } from './all-tasks/all-tasks.component';
+import { AboutComponent } from './about/about.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoDataService } from './todo-data.service';
+>>>>>>> Step5
 
 @NgModule({
   declarations: [
@@ -20,8 +30,20 @@ import { AppComponent } from './app.component';
      NavbarComponent,
 >>>>>>> Step4
   ],
+<<<<<<< HEAD
   imports: [BrowserModule],
   providers: [],
+=======
+  imports: [
+    BrowserModule,
+    // Added for Step 5
+    RouterModule.forRoot(routes),
+    HttpModule,
+    HttpClientModule
+  ],
+  // Added for Step 5
+  providers: [TodoDataService],
+>>>>>>> Step5
   bootstrap: [AppComponent]
 })
 export class AppModule {}
