@@ -105,7 +105,7 @@
 
 ## Step 9
 
-### Lesson
+### Lession
 
 - Add ability to mark a Todo as done
 
@@ -134,27 +134,3 @@
 
 - Added big red 'X' to delete a Todo item
 - Add `removeTodo` to delete a todo entirely
-
-### Lesson
-
-- Add ability to mark a Todo as done
-
-### Changes
-
-- Added checkbox to mark item complete
-- Added makeComplete method to update Todo
-
-## Step 10
-
-### Lesson
-
-- Add abilty to mark complete Todo as uncomplete.
-
-### Changes
-
-- Add `onclick`
-
-### Changes
-
-- Added checkbox to mark item complete
-- Added makeComplete method to update Todo
