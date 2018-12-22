@@ -1,8 +1,6 @@
 <div class="input-group">
   <input [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()" class="form-control" type="text" placeholder="What needs to be done?">
-  <span>
-    <button mat-raised-button color="primary" (click)="addTodo()">
-      <mat-icon>add_box</mat-icon> Add
-    </button>
+  <span class="input-group-btn">
+    <button class="btn btn-primary" (click)="addTodo()">Add</button>
   </span>
 </div>
