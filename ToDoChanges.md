@@ -132,8 +132,6 @@
 
 ### Lesson
 
-> > > > > > > Step11
-
 - Add a component to add Todos
 - Display component in Todo checklist page
 - Add EventEmitter to notify lists that things have changed
