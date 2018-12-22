@@ -1,6 +1,23 @@
+<!-- Changed for Step 7 -->
 <div class="container">
-  <h2 class="heading">
-    To Do
-  </h2>
-  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="heading">To Do</h2>
+      <hr />
+      <ul class="list-group">
+        <li *ngFor="let todo of incompletetodos" class="list-group-item">
+          {{ todo.title }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2 class="heading">Completed</h2>
+      <hr />
+      <ul class="list-group">
+        <li *ngFor="let todo of completetodos" class="list-group-item">
+          <span class="todo-title">{{ todo.title }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
