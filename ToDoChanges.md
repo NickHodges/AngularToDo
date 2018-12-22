@@ -48,3 +48,32 @@
 - Added components for each route
 - Updated imports in `app.module.ts`
 - Updated `styles.css` to set container styles
+
+## Step 5
+
+### Lesson
+
+- Add `todo` class
+- Add Todo Service to access API
+- Dependency Injection of services
+
+### Changes
+
+- Added `todos.ts`
+- Added `todo-data.service.ts`
+- Updated `app.module.ts` for HTTP modules
+- Inject `ToDoDataService`
+
+## Step 6
+
+### Lessons
+
+- Accessing API and displaying data
+- Databinding in HTML file
+- Observables
+- async
+
+### Changes
+
+- Update to the all-tasks component
+- Added `ngIf` and `ngFor` directives

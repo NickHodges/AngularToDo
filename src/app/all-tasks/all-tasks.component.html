@@ -1,6 +1,19 @@
 <div class="container">
   <h2 class="heading">
-    All To Dos
+    <!-- Added for Step 6 -->
+    All To Dos <span class="task-info">( <span class="badge badge-primary">&#10003;</span> : completed tasks - <span
+        class="badge badge-danger">&#x2715;</span> : not completed tasks )</span>
   </h2>
   <br>
+
+  <!-- Added for Step 6 -->
+  <ul class="list-group">
+    <li *ngFor="let todo of allTodos | async" class="list-group-item">
+      <span *ngIf="todo.complete; else elseBlock"><span class="badge badge-primary">&#10003;</span></span>
+      <ng-template #elseBlock>
+        <span class="badge badge-danger">&#x2715;</span>
+      </ng-template>
+      <span class="todo-title">{{todo.title}}</span>
+    </li>
+  </ul>
 </div>
