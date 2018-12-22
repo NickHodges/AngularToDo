@@ -94,8 +94,6 @@
 
 ### Lessons
 
-=======
-
 ### Changes
 
 - Added `todos.ts`
@@ -144,7 +142,7 @@
 
 ## Step 9
 
-### Lesson
+### Lession
 
 - Add ability to mark a Todo as done
 
