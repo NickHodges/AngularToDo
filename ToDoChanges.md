@@ -77,3 +77,4 @@
 
 - Update to the all-tasks component
 - Added `ngIf` and `ngFor` directives
+

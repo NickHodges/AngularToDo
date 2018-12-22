@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./all-tasks.component.css']
 })
 export class AllTasksComponent implements OnInit {
-  constructor(private todoDataService: TodoDataService) { }
+  constructor(private todoDataService: TodoDataService) {}
   // Added for Step 6
   allTodos: Observable<Array<Todo>>;
 
