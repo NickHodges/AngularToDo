@@ -88,7 +88,7 @@
 
 - Added completed/incompleted methods to Todo page and to DataService
 - Updated HTML to display Todos
-<<<<<<< HEAD
+  <<<<<<< HEAD
 
 ## Step 8
 
@@ -130,8 +130,3 @@
 ### Changes
 
 - Add `onclick`
-
-### Changes
-
-- Added checkbox to mark item complete
-- Added makeComplete method to update Todo
