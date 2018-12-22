@@ -78,3 +78,13 @@
 - Update to the all-tasks component
 - Added `ngIf` and `ngFor` directives
 
+## Step 7
+
+### Lessons
+
+- Display Todos by complete/incomplete
+
+### Changes
+
+- Added completed/incompleted methods to Todo page and to DataService
+- Updated HTML to display Todos
