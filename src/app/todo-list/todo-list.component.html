@@ -1,12 +1,21 @@
 <!-- Changed for Step 7 -->
 <div class="container">
-  <app-add-todo class="app-add-todo" (addTodoEvent)="onAddTodo($event)"></app-add-todo> 
+  <app-add-todo
+    class="app-add-todo"
+    (addTodoEvent)="onAddTodo($event)"
+  ></app-add-todo>
   <div class="row">
     <div class="col-md-6">
       <h2 class="heading">To Do</h2>
       <hr />
       <ul class="list-group">
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
+          <!-- Checkbox added for Step 9 -->
+          <input
+            (click)="makeComplete(todo)"
+            type="checkbox"
+            class="checkbox"
+          />
           {{ todo.title }}
         </li>
       </ul>
