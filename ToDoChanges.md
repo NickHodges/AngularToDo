@@ -105,7 +105,7 @@
 
 ## Step 9
 
-### Lession
+### Lesson
 
 - Add ability to mark a Todo as done
 
