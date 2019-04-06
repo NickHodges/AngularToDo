@@ -1,3 +1,4 @@
+// Added in Step 3
 import { Component, OnInit } from '@angular/core';
 
 @Component({
