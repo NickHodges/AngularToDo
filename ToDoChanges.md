@@ -63,4 +63,3 @@
 - Added `todo-data.service.ts`
 - Updated `app.module.ts` for HTTP modules
 - Inject `ToDoDataService`
-  
