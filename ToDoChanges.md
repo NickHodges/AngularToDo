@@ -101,45 +101,6 @@
 - Updated `app.module.ts` for HTTP modules
 - Inject `ToDoDataService`
 
-## Step 6
-
-### Lessons
-
-- Accessing API and displaying data
-- Databinding in HTML file
-- Observables
-- async
-
-### Changes
-
-- Update to the all-tasks component
-- Added `ngIf` and `ngFor` directives
-
-## Step 7
-
-### Lessons
-
-- Display Todos by complete/incomplete
-
-### Changes
-
-- Added completed/incompleted methods to Todo page and to DataService
-- Updated HTML to display Todos
-
-## Step 8
-
-### Lesson
-
-- Add a component to add Todos
-- Display component in Todo checklist page
-- Add EventEmitter to notify lists that things have changed
-
-### Changes
-
-- Added AddToDoComponent, with code to input and add
-- Add EventEmitter
-- Add FormsModule to NgModule imports
-
 ## Step 9
 
 ### Lesson
