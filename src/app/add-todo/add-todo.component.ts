@@ -1,3 +1,5 @@
+// This file added in Step 8
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
 
@@ -11,14 +13,12 @@ export class AddTodoComponent implements OnInit {
 
   @Output() addTodoEvent: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   addTodo() {
     this.addTodoEvent.emit(this.newTodo);
     this.newTodo = new Todo();
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
