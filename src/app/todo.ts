@@ -5,7 +5,4 @@ export class Todo {
   complete: boolean = false;
   editMode: boolean = false;
 
-  constructor(values: Object = {}) {
-    Object.assign(this, values);
-  }
 }
