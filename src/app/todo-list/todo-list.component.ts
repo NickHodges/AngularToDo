@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoDataService } from '../todo-data.service';
 import { Subscription } from 'rxjs';
@@ -20,6 +19,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private addTodoSubscription: Subscription;
   private toggleCompleteSubscription: Subscription;
   private toggleIncompleteSubscription: Subscription;
+  private updateToDoSubscription: Subscription;
 
   ngOnInit() {
     this.RefreshTodos();
@@ -31,6 +31,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.addTodoSubscription.unsubscribe();
     this.toggleCompleteSubscription.unsubscribe();
     this.toggleIncompleteSubscription.unsubscribe();
+    this.updateToDoSubscription.unsubscribe();
   }
 
   completedTodos() {
@@ -51,13 +52,15 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 8
   onAddTodo(todo: Todo) {
-    addTodoSubscription = this.todoDataService.addTodo(todo).subscribe(val => {
-      this.incompletetodos.push(val);
-    });
+    this.addTodoSubscription = this.todoDataService
+      .addTodo(todo)
+      .subscribe(val => {
+        this.incompletetodos.push(val);
+      });
   }
   // Added for Step 9
   makeComplete(todo) {
-    toggleCompleteSubscription = this.todoDataService
+    this.toggleCompleteSubscription = this.todoDataService
       .toggleTodoComplete(todo)
       .subscribe(val => {
         const index = this.incompletetodos.findIndex(
@@ -99,11 +102,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
   updateTodo(todo: Todo, editInput) {
     todo.title = editInput.value;
     todo.editMode = false;
-    this.todoDataService.updateTodoById(todo.id, todo).subscribe(val => {
-      const index = this.incompletetodos.findIndex(
-        thetodo => thetodo.id === val.id
-      );
-      this.incompletetodos[index] = todo;
-    });
+    this.updateToDoSubscription = this.todoDataService
+      .updateTodoById(todo.id, todo)
+      .subscribe(val => {
+        const index = this.incompletetodos.findIndex(
+          thetodo => thetodo.id === val.id
+        );
+        this.incompletetodos[index] = todo;
+      });
   }
 }
