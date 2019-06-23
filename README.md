@@ -1,10 +1,8 @@
-# PhillyCCTodo
+# NickTodo
 
 ## Introduction
 
-This project was used at the Philly Code Camp "Angular 101" class. It was originally written for Angular 6, but has been updated to be used with Angular 7.
-
-The class involved building a simple
+This project illustrates many of the basic features of a fairly robust Angular application.
 
 It demonstrates a number of Angular features, including:
 
