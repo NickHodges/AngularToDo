@@ -1,31 +1,44 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoDataService } from '../todo-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
-  constructor(private todoDataService: TodoDataService) { }
+export class TodoListComponent implements OnInit, OnDestroy {
+  constructor(private todoDataService: TodoDataService) {}
 
   // Everything below is added for Step 7
-  completetodos: Array<Todo>;
-  incompletetodos: Array<Todo>;
+  private completetodos: Array<Todo>;
+  private incompletetodos: Array<Todo>;
+  private completeSubscription: Subscription;
+  private incompleteSubscription: Subscription;
+  private addTodoSubscription: Subscription;
+  private toggleSubscription: Subscription;
 
   ngOnInit() {
     this.RefreshTodos();
   }
 
+  ngOnDestroy(): void {
+    this.completeSubscription.unsubscribe();
+    this.incompleteSubscription.unsubscribe();
+    this.addTodoSubscription.unsubscribe();
+    thos.toggleSubscription.unsubscribe();
+  }
+
   completedTodos() {
-    this.todoDataService
+    this.completeSubscription = this.todoDataService
       .completedTodos()
       .subscribe(todos => (this.completetodos = todos));
   }
 
   incompletedToDos() {
-    this.todoDataService
+    this.incompleteSubscription = this.todoDataService
       .incompletedTodos()
       .subscribe(todos => (this.incompletetodos = todos));
   }
@@ -34,23 +47,22 @@ export class TodoListComponent implements OnInit {
     this.completedTodos();
     this.incompletedToDos();
   }
-
   // Added for Step 8
   onAddTodo(todo: Todo) {
-    this.todoDataService.addTodo(todo).subscribe(val => {
+    addTodoSubscription = this.todoDataService.addTodo(todo).subscribe(val => {
       this.incompletetodos.push(val);
     });
   }
-
   // Added for Step 9
   makeComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-      const index = this.incompletetodos.findIndex(
-        thetodo => thetodo.id === val.id
-      );
-      this.incompletetodos.splice(index, 1);
-      this.completetodos.push(val);
-    });
+    toggleSubscription = this.todoDataService
+      .toggleTodoComplete(todo)
+      .subscribe(val => {
+        const index = this.incompletetodos.findIndex(
+          thetodo => thetodo.id === val.id
+        );
+        this.incompletetodos.splice(index, 1);
+        this.completetodos.push(val);
+      });
   }
-
 }
