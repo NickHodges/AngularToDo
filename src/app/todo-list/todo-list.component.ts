@@ -18,7 +18,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private completeSubscription: Subscription;
   private incompleteSubscription: Subscription;
   private addTodoSubscription: Subscription;
-  private toggleSubscription: Subscription;
+  private toggleCompleteSubscription: Subscription;
+  private toggleIncompleteSubscription: Subscription;
 
   ngOnInit() {
     this.RefreshTodos();
@@ -28,7 +29,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.completeSubscription.unsubscribe();
     this.incompleteSubscription.unsubscribe();
     this.addTodoSubscription.unsubscribe();
-    thos.toggleSubscription.unsubscribe();
+    this.toggleCompleteSubscription.unsubscribe();
+    this.toggleIncompleteSubscription.unsubscribe();
   }
 
   completedTodos() {
@@ -55,7 +57,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 9
   makeComplete(todo) {
-    toggleSubscription = this.todoDataService
+    toggleCompleteSubscription = this.todoDataService
       .toggleTodoComplete(todo)
       .subscribe(val => {
         const index = this.incompletetodos.findIndex(
@@ -67,12 +69,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 10
   makeIncomplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-      const index = this.completetodos.findIndex(
-        thetodo => thetodo.id === val.id
-      );
-      this.completetodos.splice(index, 1);
-      this.incompletetodos.push(val);
-    });
+    this.toggleIncompleteSubscription = this.todoDataService
+      .toggleTodoComplete(todo)
+      .subscribe(val => {
+        const index = this.completetodos.findIndex(
+          thetodo => thetodo.id === val.id
+        );
+        this.completetodos.splice(index, 1);
+        this.incompletetodos.push(val);
+      });
   }
 }
