@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoDataService } from '../todo-data.service';
 import { Subscription } from 'rxjs';
@@ -53,7 +52,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 9
   makeComplete(todo) {
-    toggleSubscription = this.todoDataService
+    this.subscriptions.add(this.todoDataService
       .toggleTodoComplete(todo)
       .subscribe(val => {
         const index = this.incompletetodos.findIndex(
@@ -61,6 +60,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
         );
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
-      });
+      }));
   }
 }
