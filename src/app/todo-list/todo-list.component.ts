@@ -15,32 +15,30 @@ export class TodoListComponent implements OnInit, OnDestroy {
   // Everything below is added for Step 7
   private completetodos: Array<Todo>;
   private incompletetodos: Array<Todo>;
-  private completeSubscription: Subscription;
-  private incompleteSubscription: Subscription;
-  private addTodoSubscription: Subscription;
-  private toggleSubscription: Subscription;
+  private subscriptions: Subscription = new Subscription();
 
   ngOnInit() {
     this.RefreshTodos();
   }
 
   ngOnDestroy(): void {
-    this.completeSubscription.unsubscribe();
-    this.incompleteSubscription.unsubscribe();
-    this.addTodoSubscription.unsubscribe();
-    thos.toggleSubscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
   completedTodos() {
-    this.completeSubscription = this.todoDataService
-      .completedTodos()
-      .subscribe(todos => (this.completetodos = todos));
+    this.subscriptions.add(
+      this.todoDataService
+        .completedTodos()
+        .subscribe(todos => (this.completetodos = todos))
+    );
   }
 
   incompletedToDos() {
-    this.incompleteSubscription = this.todoDataService
-      .incompletedTodos()
-      .subscribe(todos => (this.incompletetodos = todos));
+    this.subscriptions.add(
+      this.todoDataService
+        .incompletedTodos()
+        .subscribe(todos => (this.incompletetodos = todos))
+    );
   }
 
   private RefreshTodos() {
@@ -49,9 +47,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 8
   onAddTodo(todo: Todo) {
-    addTodoSubscription = this.todoDataService.addTodo(todo).subscribe(val => {
+      this.subscriptions.add(this.todoDataService.addTodo(todo).subscribe(val => {
       this.incompletetodos.push(val);
-    });
+    }));
   }
   // Added for Step 9
   makeComplete(todo) {
