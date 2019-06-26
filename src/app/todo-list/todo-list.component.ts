@@ -16,7 +16,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private completetodos: Array<Todo>;
   private incompletetodos: Array<Todo>;
   private subscriptions: Subscription = new Subscription();
-  private addTodoSubscription: Subscription;
 
   ngOnInit() {
     this.RefreshTodos();
@@ -24,7 +23,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-    this.addTodoSubscription.unsubscribe();
   }
 
   completedTodos() {
@@ -49,8 +47,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 8
   onAddTodo(todo: Todo) {
-    addTodoSubscription = this.todoDataService.addTodo(todo).subscribe(val => {
+      this.subscriptions.add(this.todoDataService.addTodo(todo).subscribe(val => {
       this.incompletetodos.push(val);
-    });
+    }));
   }
 }
