@@ -47,11 +47,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 8
   onAddTodo(todo: Todo) {
-    addTodoSubscription = this.todoDataService.addTodo(todo).subscribe(val => {
-      .addTodo(todo)
+    this.subscriptions.add(this.todoDataService.addTodo(todo).subscribe(val => {
+      addTodo(todo)
       .subscribe(val => {
         this.incompletetodos.push(val);
-    }));
+    })));
   }
   // Added for Step 9
   makeComplete(todo) {
