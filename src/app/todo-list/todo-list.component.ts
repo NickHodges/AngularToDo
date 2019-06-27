@@ -63,7 +63,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
         );
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
-      })); )
+      }));
   }
   // Added for Step 10
   makeIncomplete(todo) {
