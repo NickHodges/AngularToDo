@@ -16,7 +16,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private incompletetodos: Array<Todo>;
   private subscriptions: Subscription = new Subscription();
 
-
   ngOnInit() {
     this.RefreshTodos();
   }
