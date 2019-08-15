@@ -17,8 +17,7 @@ It demonstrates a number of Angular features, including:
 - Directives
 - Validation
 - Custom Validation
-- Use of Bootstrap
-- Use of Angular Material
+- Building and using Forms and Form Data
 
 ## Process
 
