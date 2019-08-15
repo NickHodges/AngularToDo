@@ -18,6 +18,7 @@ It demonstrates a number of Angular features, including:
 - Validation
 - Custom Validation
 - Building and using Forms and Form Data
+- Dividing application into modules
 
 ## Process
 
