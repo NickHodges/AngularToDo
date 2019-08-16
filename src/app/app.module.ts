@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -31,7 +30,6 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     BrowserModule,
     // Added for Step 5
     RouterModule.forRoot(routes),
-    HttpModule,
     HttpClientModule,
     FormsModule
   ],
