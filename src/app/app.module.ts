@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,7 +25,6 @@ import { TodoDataService } from './todo-data.service';
     BrowserModule,
     // Added for Step 5
     RouterModule.forRoot(routes),
-    HttpModule,
     HttpClientModule
   ],
   // Added for Step 5
