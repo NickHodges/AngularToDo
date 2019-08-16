@@ -13,6 +13,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ContactComponent } from './contact/contact.component';
+import { PhoneCharactersOnlyDirective } from './app.directives';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { ContactComponent } from './contact/contact.component';
     AddTodoComponent,
     // Added in Step 4
     AllTasksComponent,
-    ContactComponent
+    ContactComponent,
+    // Added for Step 14
+    PhoneCharactersOnlyDirective
   ],
   imports: [
     BrowserModule,

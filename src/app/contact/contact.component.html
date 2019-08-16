@@ -7,15 +7,25 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_name">First Name *</label>
-          <input id="form_name" type="text" class="form-control" placeholder="Please enter your firstname *"
-            formControlName="form_name" />
+          <input
+            id="form_name"
+            type="text"
+            class="form-control"
+            placeholder="Please enter your firstname *"
+            formControlName="form_name"
+          />
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_lastname">Last Name *</label>
-          <input id="form_lastname" type="text" class="form-control" placeholder="Please enter your lastname *"
-            formControlName="form_lastname" />
+          <input
+            id="form_lastname"
+            type="text"
+            class="form-control"
+            placeholder="Please enter your lastname *"
+            formControlName="form_lastname"
+          />
         </div>
       </div>
     </div>
@@ -23,15 +33,27 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_email">Email *</label>
-          <input id="form_email" type="email" class="form-control" placeholder="Please enter your email *"
-            formControlName="form_email" />
+          <input
+            id="form_email"
+            type="email"
+            class="form-control"
+            placeholder="Please enter your email *"
+            formControlName="form_email"
+          />
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="form_phone">Phone</label>
-          <input id="form_phone" type="tel" class="form-control" placeholder="Please enter your phone"
-            formControlName="form_phone" />
+          <label for="form_phone">Phone (xxx-xxx-xxxx) *</label>
+          <input
+            id="form_phone"
+            type="tel"
+            class="form-control"
+            placeholder="Please enter your phone *"
+            phoneDigitsOnly
+            maxlength="12"
+            formControlName="form_phone"
+          />
         </div>
       </div>
     </div>
@@ -39,13 +61,24 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="form_message">Message * (Minimum if 15 characters)</label>
-          <textarea id="form_message" required class="form-control" placeholder="Message *" rows="6"
-            formControlName="form_message"></textarea>
+          <textarea
+            id="form_message"
+            required
+            class="form-control"
+            placeholder="Message *"
+            rows="6"
+            formControlName="form_message"
+          ></textarea>
         </div>
       </div>
       <div class="col-md-12">
         <!-- Changed for Step 13 -->
-        <button type="submit" class="btn btn-success btn-send" value="Send message" [disabled]="!(formModel.valid)" >
+        <button
+          type="submit"
+          class="btn btn-success btn-send"
+          value="Send message"
+          [disabled]="!formModel.valid"
+        >
           Submit
         </button>
         <button type="reset" class="btn btn-default">Reset</button>
