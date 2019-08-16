@@ -1,5 +1,5 @@
 <!-- This file added for Step 13  -->
-<form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="messages"></div>
 
   <div class="container">
@@ -13,7 +13,16 @@
             class="form-control"
             placeholder="Please enter your firstname *"
             formControlName="form_name"
+            required
           />
+          <div
+            *ngIf="form_name.invalid && (form_name.dirty || form_name.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="form_name.errors.required">
+              First Name is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -26,6 +35,12 @@
             placeholder="Please enter your lastname *"
             formControlName="form_lastname"
           />
+          <div *ngIf="form_lastname.invalid && (form_name.dirty || form_name.touched)" class="alert alert-danger">
+            <div *ngIf="form_lastname.errors.required">
+             Last Name is required.
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -77,7 +92,7 @@
           type="submit"
           class="btn btn-success btn-send"
           value="Send message"
-          [disabled]="!formModel.valid"
+          [disabled]="!contactForm.valid"
         >
           Submit
         </button>
