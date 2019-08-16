@@ -142,3 +142,16 @@
 
 - update HTML to add an input box when you click on an item
 - Code to update the text of an incomplete todo
+
+## Step 13
+
+### Lesson
+
+- Add Contact form with basic validation
+
+### Changes
+
+- Add HTML form
+- Add controls in Typescript
+- Perform basic validation
+- Submit form to the console
