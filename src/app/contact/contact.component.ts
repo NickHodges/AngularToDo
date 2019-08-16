@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NumberValidators } from '../app.validators';
 
 @Component({
   selector: 'app-contact-form',
@@ -15,7 +16,7 @@ export class ContactComponent {
       form_name: ['', Validators.required],
       form_lastname: ['', Validators.required],
       form_email: ['', [Validators.required, Validators.email]],
-      form_phone: ['', Validators.required],
+      form_phone: ['', [Validators.required, NumberValidators.phone()]],
       form_message: ['', [Validators.required, Validators.minLength(15)]]
     });
   }
