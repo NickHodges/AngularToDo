@@ -45,16 +45,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.incompletedToDos();
   }
   // Added for Step 8
-
   onAddTodo(todo: Todo) {
       this.subscriptions.add(this.todoDataService.addTodo(todo).subscribe(val => {
       this.incompletetodos.push(val);
     }));
   }
-
   // Added for Step 9
   makeComplete(todo) {
-      this.subscriptions.add(this.todoDataService
+    this.subscriptions.add(this.todoDataService
       .toggleTodoComplete(todo)
       .subscribe(val => {
         const index = this.incompletetodos.findIndex(
@@ -62,19 +60,19 @@ export class TodoListComponent implements OnInit, OnDestroy {
         );
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
-      }));
+      })));
   }
   // Added for Step 10
   makeIncomplete(todo) {
-    this.subscriptions.add(this.todoDataService
-      .toggleTodoComplete(todo)
-      .subscribe(val => {
+    this.subscriptions.add(
+      this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
         const index = this.completetodos.findIndex(
           thetodo => thetodo.id === val.id
         );
         this.completetodos.splice(index, 1);
         this.incompletetodos.push(val);
-      }));
+      })
+    );
   }
 
   // Added for Step 11
