@@ -20,7 +20,6 @@ It demonstrates a number of Angular features, including:
 - Building and using Forms and Form Data
 - Dividing application into modules
 
-
 ## Process
 
 The code is divided into 20 branches, ranging from Step1 to Step20.
