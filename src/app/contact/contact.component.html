@@ -44,7 +44,8 @@
         </div>
       </div>
       <div class="col-md-12">
-        <button type="submit" class="btn btn-success btn-send" value="Send message">
+        <!-- Changed for Step 13 -->
+        <button type="submit" class="btn btn-success btn-send" value="Send message" [disabled]="!(formModel.valid)" >
           Submit
         </button>
         <button type="reset" class="btn btn-default">Reset</button>

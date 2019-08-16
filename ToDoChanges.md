@@ -151,7 +151,9 @@
 
 ### Changes
 
-- Add HTML form
+- Add HTML contact form
 - Add controls in Typescript
-- Perform basic validation
+- Perform basic validation in code
 - Submit form to the console
+- Only enable submit button if form is valid
+
