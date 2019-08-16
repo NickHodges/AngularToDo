@@ -46,21 +46,23 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
   // Added for Step 8
   onAddTodo(todo: Todo) {
-      this.subscriptions.add(this.todoDataService.addTodo(todo).subscribe(val => {
-      this.incompletetodos.push(val);
-    }));
+    this.subscriptions.add(
+      this.todoDataService.addTodo(todo).subscribe(val => {
+        this.incompletetodos.push(val);
+      })
+    );
   }
   // Added for Step 9
   makeComplete(todo) {
-    this.subscriptions.add(this.todoDataService
-      .toggleTodoComplete(todo)
-      .subscribe(val => {
+    this.subscriptions.add(
+      this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
         const index = this.incompletetodos.findIndex(
           thetodo => thetodo.id === val.id
         );
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
-      })));
+      })
+    );
   }
   // Added for Step 10
   makeIncomplete(todo) {
@@ -77,12 +79,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   // Added for Step 11
   removeTodo(todo) {
-      this.subscriptions.add(this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
-      const index = this.incompletetodos.findIndex(
-        thetodo => thetodo.id === todo.id
-      );
-      this.incompletetodos.splice(index, 1);
-    }));
+    this.subscriptions.add(
+      this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
+        const index = this.incompletetodos.findIndex(
+          thetodo => thetodo.id === todo.id
+        );
+        this.incompletetodos.splice(index, 1);
+      })
+    );
   }
 
   // Added for Step 12
@@ -94,13 +98,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
   updateTodo(todo: Todo, editInput) {
     todo.title = editInput.value;
     todo.editMode = false;
-      this.subscriptions.add(this.todoDataService
-      .updateTodoById(todo.id, todo)
-      .subscribe(val => {
+    this.subscriptions.add(
+      this.todoDataService.updateTodoById(todo.id, todo).subscribe(val => {
         const index = this.incompletetodos.findIndex(
           thetodo => thetodo.id === val.id
         );
         this.incompletetodos[index] = todo;
-      }));
+      })
+    );
   }
 }
