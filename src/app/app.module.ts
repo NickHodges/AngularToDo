@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +25,16 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     // Added in Step 8
     AddTodoComponent,
     // Added in Step 4
-    AllTasksComponent
+    AllTasksComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     // Added for Step 5
     RouterModule.forRoot(routes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   // Added for Step 5
   providers: [TodoDataService],

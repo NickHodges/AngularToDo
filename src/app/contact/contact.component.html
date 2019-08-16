@@ -1,0 +1,59 @@
+<!-- This file added for Step 13  -->
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>
+  <div class="messages"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_name">First Name *</label>
+          <input id="form_name" type="text" class="form-control" placeholder="Please enter your firstname *"
+            formControlName="form_name" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_lastname">Last Name *</label>
+          <input id="form_lastname" type="text" class="form-control" placeholder="Please enter your lastname *"
+            formControlName="form_lastname" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_email">Email *</label>
+          <input id="form_email" type="email" class="form-control" placeholder="Please enter your email *"
+            formControlName="form_email" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="form_phone">Phone</label>
+          <input id="form_phone" type="tel" class="form-control" placeholder="Please enter your phone"
+            formControlName="form_phone" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="form_message">Message * (Minimum if 15 characters)</label>
+          <textarea id="form_message" required class="form-control" placeholder="Message *" rows="6"
+            formControlName="form_message"></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-success btn-send" value="Send message">
+          Submit
+        </button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="text-muted"><strong>*</strong> These fields are required.</p>
+      </div>
+    </div>
+  </div>
+</form>
