@@ -29,6 +29,18 @@ export class ContactComponent {
     return this.contactForm.get('form_lastname');
   }
 
+  get form_email() {
+    return this.contactForm.get('form_email');
+  }
+
+  get form_phone() {
+    return this.contactForm.get('form_phone');
+  }
+
+  get form_message() {
+    return this.contactForm.get('form_message');
+  }
+
   onSubmit() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);

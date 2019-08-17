@@ -35,12 +35,16 @@
             placeholder="Please enter your lastname *"
             formControlName="form_lastname"
           />
-          <div *ngIf="form_lastname.invalid && (form_name.dirty || form_name.touched)" class="alert alert-danger">
+          <div
+            *ngIf="
+              form_lastname.invalid && (form_name.dirty || form_name.touched)
+            "
+            class="alert alert-danger"
+          >
             <div *ngIf="form_lastname.errors.required">
-             Last Name is required.
+              Last Name is required.
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -55,6 +59,16 @@
             placeholder="Please enter your email *"
             formControlName="form_email"
           />
+          <div
+            *ngIf="
+              form_email.invalid && (form_email.dirty || form_email.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="form_email.invalid">
+              A valid email is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -69,13 +83,23 @@
             maxlength="12"
             formControlName="form_phone"
           />
+          <div
+            *ngIf="
+              form_phone.invalid && (form_phone.dirty || form_phone.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="form_phone.invalid">
+              A valid telephone is required.
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <label for="form_message">Message * (Minimum if 15 characters)</label>
+          <label for="form_message">Message * (Minimum of 15 characters)</label>
           <textarea
             id="form_message"
             required
@@ -84,6 +108,18 @@
             rows="6"
             formControlName="form_message"
           ></textarea>
+          <div
+            *ngIf="
+              form_message.invalid &&
+              !form_message.errors.required &&
+              (form_message.dirty || form_message.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="form_message.errors.minlength">
+              Message must be at least 15 characters.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-12">
