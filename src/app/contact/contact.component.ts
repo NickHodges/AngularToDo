@@ -9,10 +9,10 @@ import { NumberValidators } from '../app.validators';
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {
-  formModel: FormGroup;
+  contactForm: FormGroup;
 
   constructor(fb: FormBuilder) {
-    this.formModel = fb.group({
+    this.contactForm = fb.group({
       form_name: ['', Validators.required],
       form_lastname: ['', Validators.required],
       form_email: ['', [Validators.required, Validators.email]],
@@ -22,8 +22,8 @@ export class ContactComponent {
   }
 
   onSubmit() {
-    if (this.formModel.valid) {
-      console.log(this.formModel.value);
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
     }
   }
 }
