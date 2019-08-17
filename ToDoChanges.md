@@ -17,6 +17,9 @@
 ### Lesson
 
 - Build a backend server with json-server
+
+### Changes
+
 - `npm -g install json-server`
 - Check functionality at `http://localhost:3000`
 
@@ -88,3 +91,4 @@
 
 - Added completed/incompleted methods to Todo page and to DataService
 - Updated HTML to display Todos
+- Subscription to track Observables
