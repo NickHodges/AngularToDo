@@ -1,7 +1,6 @@
 <!-- This file added for Step 13  -->
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
   <div class="messages"></div>
-
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -15,11 +14,12 @@
             formControlName="form_name"
             required
           />
+          <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="form_name.invalid && (form_name.dirty || form_name.touched)"
             class="alert alert-danger"
           >
-            <div *ngIf="form_name.errors.required">
+            <div *ngIf="!!form_name.errors.required">
               First Name is required.
             </div>
           </div>
@@ -35,13 +35,14 @@
             placeholder="Please enter your lastname *"
             formControlName="form_lastname"
           />
+          <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="
               form_lastname.invalid && (form_name.dirty || form_name.touched)
             "
             class="alert alert-danger"
           >
-            <div *ngIf="form_lastname.errors.required">
+            <div *ngIf="!!form_lastname.errors.required">
               Last Name is required.
             </div>
           </div>
@@ -59,6 +60,7 @@
             placeholder="Please enter your email *"
             formControlName="form_email"
           />
+          <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="
               form_email.invalid && (form_email.dirty || form_email.touched)
@@ -83,6 +85,7 @@
             maxlength="12"
             formControlName="form_phone"
           />
+          <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="
               form_phone.invalid && (form_phone.dirty || form_phone.touched)
@@ -108,6 +111,7 @@
             rows="6"
             formControlName="form_message"
           ></textarea>
+          <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="
               form_message.invalid &&
@@ -116,7 +120,7 @@
             "
             class="alert alert-danger"
           >
-            <div *ngIf="form_message.errors.minlength">
+            <div *ngIf="!!form_message.errors.minlength">
               Message must be at least 15 characters.
             </div>
           </div>

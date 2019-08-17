@@ -21,6 +21,7 @@ export class ContactComponent {
     });
   }
 
+  // These getters were added for Step 15
   get form_name() {
     return this.contactForm.get('form_name');
   }
