@@ -38,7 +38,8 @@
           <!-- This <div> was added for Step 15 -->
           <div
             *ngIf="
-              form_lastname.invalid && (form_name.dirty || form_name.touched)
+              form_lastname.invalid &&
+              (form_lastname.dirty || form_lastname.touched)
             "
             class="alert alert-danger"
           >
