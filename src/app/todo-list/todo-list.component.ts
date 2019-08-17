@@ -13,9 +13,10 @@ export class TodoListComponent implements OnInit, OnDestroy {
   constructor(private todoDataService: TodoDataService) {}
 
   // Everything below is added for Step 7
-  private completetodos: Array<Todo>;
-  private incompletetodos: Array<Todo>;
   private subscriptions: Subscription = new Subscription();
+  public completetodos: Array<Todo>;
+  public incompletetodos: Array<Todo>;
+
 
   ngOnInit() {
     this.RefreshTodos();
