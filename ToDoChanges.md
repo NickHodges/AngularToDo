@@ -17,6 +17,9 @@
 ### Lesson
 
 - Build a backend server with json-server
+
+### Changes
+
 - `npm -g install json-server`
 - Check functionality at `http://localhost:3000`
 
