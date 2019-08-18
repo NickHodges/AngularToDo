@@ -176,4 +176,10 @@
 
 ### Lesson
 
+- Introduce the notion of ng-content
+
 ### Changes
+
+- Added component that uses the ng-content tag
+- Added tags to make it all work
+  Added "select" attribute to illustrate how you can customize content
