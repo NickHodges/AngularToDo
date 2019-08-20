@@ -13,6 +13,7 @@ import {
   Input,
   ViewChild,
   ElementRef,
+  ContentChild,
 } from '@angular/core';
 
 @Component({
@@ -35,7 +36,10 @@ export class LifeCycleComponent
 
   @Input() lifecycletext: string;
 
-  @ViewChild('header2', { static: true }) header2: ElementRef;
+  @ViewChild('header2', { static: true })
+  header2: ElementRef;
+  @ContentChild('paragraphContent', { static: true })
+  paragraphContent: ElementRef;
 
   constructor() {
     console.log(
@@ -60,6 +64,10 @@ export class LifeCycleComponent
       // header2 is null here if static: false above
       console.log('Header2: ', this.header2.nativeElement.textContent);
     }
+    console.log(
+      'paragraphContent: ',
+      this.paragraphContent.nativeElement.textContent
+    );
     this.order++;
   }
 
@@ -74,6 +82,10 @@ export class LifeCycleComponent
     console.log(
       'This is the ngAfterContentInit() event and my firing order is: ' +
         this.order
+    );
+    console.log(
+      'paragraphContent: ',
+      this.paragraphContent.nativeElement.textContent
     );
     this.order++;
   }
