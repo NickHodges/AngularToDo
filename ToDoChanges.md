@@ -195,3 +195,9 @@
 - Add container component to contain child component
 - Add child component, which will ensure that the View events are fired
 - Add handlers and interface references for all the lifecycle events.
+
+## Step 17
+
+### Lesson
+
+### Changes
