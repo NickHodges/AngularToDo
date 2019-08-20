@@ -183,3 +183,15 @@
 - Added component that uses the ng-content tag
 - Added tags to make it all work
   Added "select" attribute to illustrate how you can customize content
+
+## Step 16
+
+### Lesson
+
+- See component lifecylce events
+
+### Changes
+
+- Add container component to contain child component
+- Add child component, which will ensure that the View events are fired
+- Add handlers and interface references for all the lifecycle events.
