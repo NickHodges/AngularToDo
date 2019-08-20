@@ -11,6 +11,8 @@ import {
   SimpleChanges,
   AfterContentInit,
   Input,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 
 @Component({
@@ -33,6 +35,8 @@ export class LifeCycleComponent
 
   @Input() lifecycletext: string;
 
+  @ViewChild('header2', { static: true }) header2: ElementRef;
+
   constructor() {
     console.log(
       'This is the constructor() and my firing order is: ' + this.order
@@ -44,6 +48,7 @@ export class LifeCycleComponent
     console.log(
       'This is the ngOnChanges() event and my firing order is: ' + this.order
     );
+    console.log(changes);
     this.order++;
   }
 
@@ -51,6 +56,10 @@ export class LifeCycleComponent
     console.log(
       'This is the ngOnInit() event and my firing order is: ' + this.order
     );
+    if (this.header2) {
+      // header2 is null here if static: false above
+      console.log('Header2: ', this.header2.nativeElement.textContent);
+    }
     this.order++;
   }
 
@@ -81,6 +90,7 @@ export class LifeCycleComponent
     console.log(
       'This is the ngAfterViewInit() and my firing order is: ' + this.order
     );
+    console.log('Header2: ', this.header2.nativeElement.textContent);
     this.order++;
   }
 
