@@ -1,6 +1,5 @@
 // This component was added for Step 16
 import { Component, OnInit } from '@angular/core';
-import { LifeCycleComponent } from '../life-cycle/life-cycle.component';
 
 @Component({
   selector: 'app-life-cycle-container',
