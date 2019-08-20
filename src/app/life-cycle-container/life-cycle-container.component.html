@@ -1,0 +1,15 @@
+<!-- Added for Step 16 -->
+<div class="container">
+  <div>
+    <button class="btn btn-primary" (click)="toggleShowStuff()">
+      Toggle
+    </button>
+  </div>
+  <p></p>
+  <div>
+    <app-life-cycle
+      lifecycletext="This is the text for the lifecycletest field"
+      *ngIf="showStuff"
+    ></app-life-cycle>
+  </div>
+</div>
