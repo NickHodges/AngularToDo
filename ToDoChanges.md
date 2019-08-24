@@ -207,3 +207,14 @@
 - Added highlightOnHover directive
 - Added tags in HTML to make items highlight
 - This article really helped: [https://reactgo.com/angular-custom-directive-example/](https://reactgo.com/angular-custom-directive-example/)
+
+## Step 18
+
+### Lesson
+
+- Create a structural directive (Like `*ngFor` or `*ngIf`)
+
+### Changes
+
+- Create a new directive called 'Unless'
+- Add directive to HTML

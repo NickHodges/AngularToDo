@@ -34,8 +34,12 @@
               type="text"
             />
           </span>
-          <!-- Added for Step 11 -->
-          <button (click)="removeTodo(todo)" class="btn btn-danger delete-todo">
+          <!-- Added for Step 11, changed for Step 18 -->
+          <button
+            *Unless="dontShowDeleteButton"
+            (click)="removeTodo(todo)"
+            class="btn btn-danger delete-todo"
+          >
             &#x2715;
           </button>
         </li>

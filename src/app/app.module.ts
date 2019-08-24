@@ -18,6 +18,7 @@ import { AboutContentComponent } from './about-content/about-content.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-container.component';
 import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
+import { UnlessDirective } from './unless.directive';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
     LifeCycleComponent,
     LifeCycleContainerComponent,
     HighlightOnHoverDirective,
+    UnlessDirective,
   ],
   imports: [
     BrowserModule,
