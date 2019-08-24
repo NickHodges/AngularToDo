@@ -206,4 +206,4 @@
 
 - Added highlightOnHover directive
 - Added tags in HTML to make items highlight
-- This article really helped: https://reactgo.com/angular-custom-directive-example/
+- This article really helped: [https://reactgo.com/angular-custom-directive-example/](https://reactgo.com/angular-custom-directive-example/)
