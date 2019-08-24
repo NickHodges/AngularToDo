@@ -36,7 +36,7 @@
           </span>
           <!-- Added for Step 11, changed for Step 18 -->
           <button
-            *Unless="dontShowDeleteButton"
+            *ngIfNot="dontShowDeleteButton"
             (click)="removeTodo(todo)"
             class="btn btn-danger delete-todo"
           >

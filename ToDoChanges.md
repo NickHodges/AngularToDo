@@ -216,5 +216,5 @@
 
 ### Changes
 
-- Create a new directive called 'Unless'
+- Create a new directive called 'ngIfNot'
 - Add directive to HTML

@@ -3,10 +3,10 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[Unless]',
+  selector: '[ngIfNot]',
 })
-export class UnlessDirective {
-  @Input() set Unless(condition: boolean) {
+export class ngIfNotDirective {
+  @Input() set ngIfNot(condition: boolean) {
     // property has to be the same name.
     if (!condition) {
       // display tagged element
