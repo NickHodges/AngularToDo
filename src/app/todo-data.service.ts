@@ -19,7 +19,7 @@ export class TodoDataService {
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
     return this.aHttpService.get<Array<Todo>>(
-      `http://localhost:3000/todos?complete=true`
+      `${this.rootURL}/todos?complete=true`
     );
   }
 
@@ -27,7 +27,7 @@ export class TodoDataService {
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
     return this.aHttpService.get<Array<Todo>>(
-      `http://localhost:3000/todos?complete=false`
+      `${this.rootURL}/todos?complete=false`
     );
   }
 }
