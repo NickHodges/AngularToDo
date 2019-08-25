@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo';
 
-@Injectable()
+@Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
   constructor(private aHttpService: HttpClient) {}
 
