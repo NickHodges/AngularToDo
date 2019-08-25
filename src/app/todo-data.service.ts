@@ -12,6 +12,6 @@ export class TodoDataService {
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>('${rootURL}/todos');
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`);
   }
 }
