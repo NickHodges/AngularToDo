@@ -1,12 +1,13 @@
 // This file was added in Step 5
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
   private rootURL: string = 'http://localhost:3000';
+  ToDosChanged = new EventEmitter<Todo>();
 
   constructor(private aHttpService: HttpClient) {}
 
@@ -34,6 +35,7 @@ export class TodoDataService {
   // Added for Stop 8
   // Create/Post todo
   addTodo(todo: Todo): Observable<Todo> {
+    this.ToDosChanged.emit(todo)
     return this.aHttpService.post<Todo>(`${this.rootURL}//todos`, todo);
   }
 
