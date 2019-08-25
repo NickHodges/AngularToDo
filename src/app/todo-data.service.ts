@@ -53,6 +53,6 @@ export class TodoDataService {
   // Added for Step 11
   // Delete todo
   deleteTodoById(id: number): Observable<Todo> {
-    return this.aHttpService.delete<Todo>(`http://localhost:3000/todos/${id}`);
+    return this.aHttpService.delete<Todo>(`${this.rootURL}/todos/${id}`);
   }
 }
