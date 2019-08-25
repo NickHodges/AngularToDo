@@ -31,9 +31,9 @@ export class TodoDataService {
     );
   }
 
-  // Added for Stop 8
+  // Added for Step 8
   // Create/Post todo
   addTodo(todo: Todo): Observable<Todo> {
-    return this.aHttpService.post<Todo>(`${this.rootURL}//todos`, todo);
+    return this.aHttpService.post<Todo>(`${this.rootURL}/todos`, todo);
   }
 }
