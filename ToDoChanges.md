@@ -51,3 +51,5 @@
 - Added components for each route
 - Updated imports in `app.module.ts`
 - Updated `styles.css` to set container styles
+- Add PageNotFoundComponent, redirecting there for unknown paths
+- Add attributes to manage active item on navbar
