@@ -5,9 +5,9 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="">Checklist <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" routerLink="all-tasks">All To Dos</a>
-        <a class="nav-item nav-link" routerLink="about">About</a>
+        <a class="nav-item nav-link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Checklist</a>
+        <a class="nav-item nav-link" routerLink="all-tasks" routerLinkActive="active">All To Dos</a>
+        <a class="nav-item nav-link" routerLink="about" routerLinkActive="active">About</a>
       </div>
     </div>
   </nav>
