@@ -8,6 +8,7 @@ import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     // Added in Step 4
     AboutComponent,
     AllTasksComponent,
-    TodoListComponent
+    TodoListComponent,
+    PageNotFoundComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
