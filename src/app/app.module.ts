@@ -25,7 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     // Added in Step 8
     AddTodoComponent,
     // Added in Step 4
-    AllTasksComponent
+    AllTasksComponent,
     // Added in Step 4
     AllTasksComponent,
     TodoListComponent,
