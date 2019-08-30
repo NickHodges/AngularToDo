@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ContactComponent } from './contact/contact.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,12 @@ import { ContactComponent } from './contact/contact.component';
     AddTodoComponent,
     // Added in Step 4
     AllTasksComponent,
+    // Added for Step 13
     ContactComponent
+    // Added in Step 4
+    AllTasksComponent,
+    TodoListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
