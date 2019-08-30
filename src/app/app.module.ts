@@ -15,6 +15,7 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ContactComponent } from './contact/contact.component';
 import { PhoneCharactersOnlyDirective } from './app.directives';
 import { AboutContentComponent } from './about-content/about-content.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,12 @@ import { AboutContentComponent } from './about-content/about-content.component';
     AddTodoComponent,
     // Added in Step 4
     AllTasksComponent,
+    // Added for Step 13
+    ContactComponent,
+    // Added in Step 4
+    AllTasksComponent,
+    TodoListComponent,
+    PageNotFoundComponent,
     ContactComponent,
     // Added for Step 14
     PhoneCharactersOnlyDirective,
