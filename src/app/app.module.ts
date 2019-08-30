@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AppComponent } from './app.component';
@@ -29,7 +28,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     // Added in Step 4
     AllTasksComponent,
     // Added for Step 13
-    ContactComponent
+    ContactComponent,
     // Added in Step 4
     AllTasksComponent,
     TodoListComponent,

@@ -26,7 +26,8 @@ export const routes: Routes = [
   {
     path: '**',
     component: TodoListComponent
-   }, 
+  },
+  {
     path: 'not-found',
     component: PageNotFoundComponent
   },
