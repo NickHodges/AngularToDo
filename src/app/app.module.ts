@@ -10,6 +10,7 @@ import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { AboutComponent } from './about/about.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { TodoDataService } from './todo-data.service';
     NavbarComponent,
     // Added in Step 4
     AllTasksComponent
+    TodoListComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
