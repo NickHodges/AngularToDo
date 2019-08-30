@@ -19,6 +19,7 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-container.component';
 import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
 import { ngIfNotDirective } from './ngIfNot.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,12 @@ import { ngIfNotDirective } from './ngIfNot.directive';
     AddTodoComponent,
     // Added in Step 4
     AllTasksComponent,
+    // Added for Step 13
+    ContactComponent,
+    // Added in Step 4
+    AllTasksComponent,
+    TodoListComponent,
+    PageNotFoundComponent,
     ContactComponent,
     // Added for Step 14
     PhoneCharactersOnlyDirective,
