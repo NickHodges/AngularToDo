@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,10 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     AddTodoComponent,
     // Added in Step 4
     AllTasksComponent
+    // Added in Step 4
+    AllTasksComponent,
+    TodoListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
