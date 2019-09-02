@@ -54,7 +54,6 @@
 - Add PageNotFoundComponent, redirecting there for unknown paths
 - Add attributes to manage active item on navbar
 
-
 ## Step 5
 
 ### Lesson
@@ -221,15 +220,3 @@
 
 - Create a new directive called 'ngIfNot'
 - Add directive to HTML
-
-## Step 19
-
-### Lesson
-
-- Make better use of the service to emit events
-
-### Changes
-
-- Remove EventEmitter from the add-todo.component
-- Put EventEmitter in the service
-- Subscribe in the component
