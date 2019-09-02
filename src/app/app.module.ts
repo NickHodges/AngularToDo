@@ -20,6 +20,7 @@ import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-c
 import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
 import { ngIfNotDirective } from './ngIfNot.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     LifeCycleContainerComponent,
     HighlightOnHoverDirective,
     ngIfNotDirective,
+    ToDoNotesComponent,
   ],
   imports: [
     BrowserModule,
