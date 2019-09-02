@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoDataService } from '../todo-data.service';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit, OnDestroy {
+  @Input() index: number;
+
   constructor(private todoDataService: TodoDataService) {}
 
   // Everything below is added for Step 7
