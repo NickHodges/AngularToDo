@@ -16,7 +16,7 @@ export class ContactComponent {
       form_name: ['', Validators.required],
       form_lastname: ['', Validators.required],
       form_email: ['', [Validators.required, Validators.email]],
-      form_phone: ['', [Validators.required, NumberValidators.phone]],
+      form_phone: ['', [Validators.required, NumberValidators.phone()]],
       form_message: ['', [Validators.required, Validators.minLength(15)]]
     });
   }
