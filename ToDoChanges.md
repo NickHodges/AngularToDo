@@ -173,7 +173,7 @@
 ### Changes
 
 - Added directive to prevent bad input for telephone numbers
-- Added set of useful contants for the telephone number directive
+- Added set of useful constants for the telephone number directive
 
 ## Step 15
 

@@ -6,13 +6,23 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_name">First Name *</label>
-          <input id="form_name" type="text" class="form-control" placeholder="Please enter your firstname *" formControlName="form_name" />
+          <input id="form_name" type="text" class="form-control" placeholder="Please enter your first name *" formControlName="form_name" />
+          <div *ngIf="form_name.invalid && (form_name.dirty || form_name.touched)" class="alert alert-danger">
+            <div *ngIf="!!form_name.errors.required">
+              First Name is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_lastname">Last Name *</label>
-          <input id="form_lastname" type="text" class="form-control" placeholder="Please enter your lastname *" formControlName="form_lastname" />
+          <input id="form_lastname" type="text" class="form-control" placeholder="Please enter your last name *" formControlName="form_lastname" />
+          <div *ngIf="form_lastname.invalid && (form_lastname.dirty || form_lastname.touched)" class="alert alert-danger">
+            <div *ngIf="!!form_lastname.errors.required">
+              Last Name is required.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -21,12 +31,22 @@
         <div class="form-group">
           <label for="form_email">Email *</label>
           <input id="form_email" type="email" class="form-control" placeholder="Please enter your email *" formControlName="form_email" />
+          <div *ngIf="form_email.invalid && (form_email.dirty || form_email.touched)" class="alert alert-danger">
+            <div *ngIf="form_email.invalid">
+              A valid email is required.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_phone">Phone (xxx-xxx-xxxx) *</label>
           <input id="form_phone" type="tel" class="form-control" placeholder="Please enter your phone *" phoneDigitsOnly maxlength="12" formControlName="form_phone" />
+          <div *ngIf="form_phone.invalid && (form_phone.dirty || form_phone.touched)" class="alert alert-danger">
+            <div *ngIf="form_phone.invalid">
+              A valid telephone is required.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -35,6 +55,11 @@
         <div class="form-group">
           <label for="form_message">Message * (Minimum if 15 characters)</label>
           <textarea id="form_message" required class="form-control" placeholder="Message *" rows="6" formControlName="form_message"></textarea>
+          <div *ngIf="form_message.invalid && !form_message.errors.required && (form_message.dirty || form_message.touched)" class="alert alert-danger">
+            <div *ngIf="!!form_message.errors.minlength">
+              Message must be at least 15 characters.
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-12">
