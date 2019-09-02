@@ -1,0 +1,13 @@
+<!-- Added for Step 20 -->
+<hr />
+
+<div class="container">
+  <h3>Editing note for "{{ todo?.title }}"</h3>
+</div>
+
+<div *ngIf="editNoteForm" class="container form-group">
+  <form (ngSubmit)="onSubmitNote()" [formGroup]="editNoteForm">
+    <textarea id="editNote" formControlName="editNote" class="form-control" rows="6">{{ todo?.note }}</textarea>
+    <div><button class="btn btn-primary" type="submit">Submit</button></div>
+  </form>
+</div>

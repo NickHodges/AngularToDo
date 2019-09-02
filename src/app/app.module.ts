@@ -21,6 +21,7 @@ import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
 import { ngIfNotDirective } from './ngIfNot.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
+import { TodoEditComponent } from './todo-edit/todo-edit.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
     HighlightOnHoverDirective,
     ngIfNotDirective,
     ToDoNotesComponent,
+    TodoEditComponent,
   ],
   imports: [
     BrowserModule,
