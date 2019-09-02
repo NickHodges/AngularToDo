@@ -1,7 +1,7 @@
 // This whole component added for Step 18
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TodoDataService } from '../todo-data.service';
 import { Todo } from '../todo';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
   todo: Todo;
   subscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private todoDataService: TodoDataService) {}
+  constructor(private route: ActivatedRoute, private todoDataService: TodoDataService, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
@@ -29,5 +29,10 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe;
+  }
+
+  onEditNote() {
+    this.router.navigate(['edit'], { relativeTo: this.route });
+    //this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 }

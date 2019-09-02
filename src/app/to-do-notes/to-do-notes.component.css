@@ -1,5 +1,11 @@
 #green-corners {
   border-radius: 25px;
-  border: 2px solid #73AD21;
+  border: 2px solid #73ad21;
   padding: 20px;
+}
+
+textarea#styled {
+  border: 0px;
+  padding: 5px;
+  background-color: white;
 }

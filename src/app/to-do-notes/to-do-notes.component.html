@@ -2,8 +2,13 @@
 
 <div class="container">
   <h3>Note for "{{ todo?.title }}"</h3>
+  <span class="text-right">
+    <button (click)="onEditNote(todo)" class="btn btn-primary">
+      &#x270e;
+    </button>
+  </span>
 </div>
 
 <div class="container" id="green-corners">
-  <p>{{ todo?.note }}</p>
+  <textarea id="styled" rows="6" disabled readonly>{{ todo?.note }}</textarea>
 </div>
