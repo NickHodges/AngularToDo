@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-container.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
+import { TodoEditComponent } from './todo-edit/todo-edit.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,9 @@ export const routes: Routes = [
       {
         path: ':id',
         component: ToDoNotesComponent
-      }
+      },
+      // Added for Step 20
+      { path: ':id/edit', component: TodoEditComponent }
     ]
   },
   {
