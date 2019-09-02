@@ -19,17 +19,13 @@ export class TodoDataService {
   // Added for Step 7
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(
-      `${this.rootURL}/todos?complete=true`
-    );
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos?complete=true`);
   }
 
   // Added for Step 7
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(
-      `${this.rootURL}/todos?complete=false`
-    );
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos?complete=false`);
   }
 
   // Added for Step 8
@@ -56,5 +52,10 @@ export class TodoDataService {
   // Delete todo
   deleteTodoById(id: number): Observable<Todo> {
     return this.aHttpService.delete<Todo>(`${this.rootURL}/todos/${id}`);
+  }
+
+  // Added for Step 19
+  getTodoById(id: number): Observable<Todo> {
+    return this.aHttpService.get<Todo>(`${this.rootURL}/todos/${id}`);
   }
 }
