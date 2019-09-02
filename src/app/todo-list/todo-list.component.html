@@ -18,14 +18,10 @@
               <input #editInput *ngIf="todo.editMode" [value]="todo.title" (keyup.enter)="updateTodo(todo, editInput)" class="edit-todo" type="text" />
             </span>
             <!-- Added for Step 11, changed for Step 18 -->
-            <button (click)="editNotes()" class="btn btn-primary todo-button">
-              &#x270e;
+
+            <button *ngIfNot="dontShowDeleteButton" (click)="removeTodo(todo)" class="btn btn-danger todo-button">
+              &#x2715;
             </button>
-            <span class="pull-right">
-              <button *ngIfNot="dontShowDeleteButton" (click)="removeTodo(todo)" class="btn btn-danger todo-button">
-                &#x2715;
-              </button>
-            </span>
           </li>
         </span>
       </ul>

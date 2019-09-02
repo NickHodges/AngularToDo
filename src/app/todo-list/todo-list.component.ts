@@ -95,8 +95,4 @@ export class TodoListComponent implements OnInit, OnDestroy {
       })
     );
   }
-
-  editNotes() {
-    console.log('Pressed Edit Note Button');
-  }
 }
