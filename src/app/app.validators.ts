@@ -8,7 +8,7 @@ export class NumberValidators {
         return null;
       }
       return {
-        phone: true
+        malformedPhoneNumber: true
       };
     };
   }
