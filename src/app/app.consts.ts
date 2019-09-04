@@ -1,3 +1,6 @@
+
+// This whole unit was added for Step 14
+
 export class KeyValues {
   // key values
   public static readonly Backspace: string = 'Backspace';
