@@ -54,7 +54,6 @@
 - Add PageNotFoundComponent, redirecting there for unknown paths
 - Add attributes to manage active item on navbar
 
-
 ## Step 5
 
 ### Lesson

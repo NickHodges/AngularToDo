@@ -16,6 +16,7 @@ export class ContactComponent {
       form_name: ['', Validators.required],
       form_lastname: ['', Validators.required],
       form_email: ['', [Validators.required, Validators.email]],
+      // NumberValidators added for Step 14
       form_phone: ['', [Validators.required, NumberValidators.phone()]],
       form_message: ['', [Validators.required, Validators.minLength(15)]]
     });
