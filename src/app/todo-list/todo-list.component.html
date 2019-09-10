@@ -12,6 +12,8 @@
           <!-- Checkbox added for Step 9 -->
           <input (click)="makeComplete(todo)" type="checkbox" class="checkbox" />
           <span class="todo-title">{{ todo.title }}</span>
+          <!-- Added for Step 11 -->
+          <button (click)="removeTodo(todo)" class="btn btn-danger delete-todo">&#x2715;</button>
         </li>
       </ul>
     </div>
