@@ -6,7 +6,7 @@
       <h2 class="heading">
         To Do
       </h2>
-      <hr>
+      <hr />
       <ul class="list-group">
         <li *ngFor="let todo of incompletetodos" class="list-group-item">
           <!-- Checkbox added for Step 9 -->
@@ -26,10 +26,10 @@
       <h2 class="heading">
         Completed
       </h2>
-      <hr>
+      <hr />
       <ul class="list-group">
         <li *ngFor="let todo of completetodos" class="list-group-item">
-          <span class="todo-title">{{todo.title}}</span>
+          <span class="todo-title">{{ todo.title }}</span>
           <!-- Added for Step 10 -->
           <span (click)="makeIncomplete(todo)" class="incomplete-todo">&#x21a2;</span>
         </li>

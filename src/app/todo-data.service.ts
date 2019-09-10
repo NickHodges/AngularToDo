@@ -1,40 +1,40 @@
 // This file was added in Step 5
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  private rootURL: string = 'http://localhost:3000';
+  private rootURL: string = 'http://localhost:3000/todos';
 
   constructor(private aHttpService: HttpClient) {}
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`);
   }
 
   // Added for Step 7
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(
-      `${this.rootURL}/todos?complete=true`
-    );
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      params: new HttpParams().set('complete', 'true')
+    });
   }
 
   // Added for Step 7
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(
-      `${this.rootURL}/todos?complete=false`
-    );
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      params: new HttpParams().set('complete', 'false')
+    });
   }
 
   // Added for Step 8
   // Create/Post todo
   addTodo(todo: Todo): Observable<Todo> {
-    return this.aHttpService.post<Todo>(`${this.rootURL}/todos`, todo);
+    return this.aHttpService.post<Todo>(`${this.rootURL}`, todo);
   }
 
   // Added for Step 9
@@ -47,12 +47,12 @@ export class TodoDataService {
   // Added for Step 9
   // Update/Put todo
   updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
-    return this.aHttpService.put<Todo>(`${this.rootURL}/todos/${id}`, newTodo);
+    return this.aHttpService.put<Todo>(`${this.rootURL}/${id}`, newTodo);
   }
 
   // Added for Step 11
   // Delete todo
   deleteTodoById(id: number): Observable<Todo> {
-    return this.aHttpService.delete<Todo>(`${this.rootURL}/todos/${id}`);
+    return this.aHttpService.delete<Todo>(`${this.rootURL}/${id}`);
   }
 }
