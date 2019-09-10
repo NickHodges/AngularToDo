@@ -47,6 +47,6 @@ export class TodoDataService {
   // Added for Step 9
   // Update/Put todo
   updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
-    return this.aHttpService.put<Todo>(`${this.rootURL}/todos/${id}`, newTodo);
+    return this.aHttpService.put<Todo>(`${this.rootURL}/${id}`, newTodo);
   }
 }
