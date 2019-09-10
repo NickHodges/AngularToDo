@@ -6,12 +6,12 @@ import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  private rootURL: string = 'http://localhost:3000';
+  private rootURL: string = 'http://localhost:3000/todos';
 
   constructor(private aHttpService: HttpClient) {}
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`);
   }
 }
