@@ -17,6 +17,7 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodoListComponent,
+    // children paths added for Step 19
     children: [
       {
         path: ':id',

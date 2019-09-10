@@ -41,6 +41,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="form_phone">Phone (xxx-xxx-xxxx) *</label>
+          <!-- phoneDigitsOnly added to line below for Step 14 -->
           <input id="form_phone" type="tel" class="form-control" placeholder="Please enter your phone *" phoneDigitsOnly maxlength="12" formControlName="form_phone" />
           <div *ngIf="form_phone.invalid && (form_phone.dirty || form_phone.touched)" class="alert alert-danger">
             <div *ngIf="form_phone.invalid">
