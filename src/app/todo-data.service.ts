@@ -6,19 +6,19 @@ import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  private rootURL: string = 'http://localhost:3000';
+  private rootURL: string = 'http://localhost:3000/todos';
 
   constructor(private aHttpService: HttpClient) {}
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`);
   }
 
   // Added for Step 7
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`, {
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
       params: new HttpParams().set('complete', 'true')
     });
   }
@@ -26,15 +26,15 @@ export class TodoDataService {
   // Added for Step 7
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/todos`, {
-      params: new HttpParams().set('complete', 'true')
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      params: new HttpParams().set('complete', 'false')
     });
   }
 
   // Added for Step 8
   // Create/Post todo
   addTodo(todo: Todo): Observable<Todo> {
-    return this.aHttpService.post<Todo>(`${this.rootURL}/todos`, todo);
+    return this.aHttpService.post<Todo>(`${this.rootURL}`, todo);
   }
 
   // Added for Step 9
