@@ -17,8 +17,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   public completetodos: Array<Todo>;
   public incompletetodos: Array<Todo>;
-  // Added for Step 18
-  public dontShowDeleteButton: Boolean = false;
 
   ngOnInit() {
     this.RefreshTodos();
