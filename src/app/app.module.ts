@@ -20,8 +20,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TodoListComponent,
     NavbarComponent,
     // Added in Step 4
-    AllTasksComponent
-    TodoListComponent
+    AllTasksComponent,
+    TodoListComponent,
     PageNotFoundComponent
   ],
   imports: [
