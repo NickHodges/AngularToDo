@@ -21,6 +21,7 @@ export class TodoDataService {
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
     return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      // Updated for Step 12
       params: new HttpParams().set('complete', 'true')
     });
   }
@@ -29,6 +30,7 @@ export class TodoDataService {
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
     return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      // Updated for Step 12
       params: new HttpParams().set('complete', 'false')
     });
   }
