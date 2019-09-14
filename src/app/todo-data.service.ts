@@ -43,19 +43,19 @@ export class TodoDataService {
   // Complete function
   toggleTodoComplete(todo: Todo): Observable<Todo> {
     todo.complete = !todo.complete;
-    return this.updateTodoById(todo.id, todo);
+    return this.updateTodoById(todo.todoid, todo);
   }
 
   // Added for Step 9
   // Update/Put todo
-  updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
-    return this.aHttpService.put<Todo>(`${this.rootURL}/${id}`, newTodo);
+  updateTodoById(todoid: number, todoToUpdate: Todo): Observable<Todo> {
+    return this.aHttpService.put<Todo>(`${this.rootURL}/${todoid}`, todoToUpdate);
   }
 
   // Added for Step 11
   // Delete todo
-  deleteTodoById(id: number): Observable<Todo> {
-    return this.aHttpService.delete<Todo>(`${this.rootURL}/${id}`);
+  deleteTodoById(todoid: number): Observable<Todo> {
+    return this.aHttpService.delete<Todo>(`${this.rootURL}/${todoid}`);
   }
 
   // Added for Step 19
