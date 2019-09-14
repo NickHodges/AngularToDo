@@ -1,8 +1,7 @@
 // Added in Step 5
 export class Todo {
-  id: number;
+  todoid: number;
   title: string;
   complete: boolean = false;
   editMode: boolean = false;
-
 }
