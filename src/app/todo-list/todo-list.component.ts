@@ -45,7 +45,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     );
   }
   // Added for Step 9
-  makeComplete(todo) {
+
+  makeComplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
         const index = this.incompletetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
@@ -54,8 +55,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
       })
     );
   }
+
   // Added for Step 10
-  makeIncomplete(todo) {
+  makeIncomplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
         const index = this.completetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
@@ -66,7 +68,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   // Added for Step 11
-  removeTodo(todo) {
+  removeTodo(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.deleteTodoById(todo.todoid).subscribe(val => {
         const index = this.incompletetodos.findIndex(thetodo => thetodo.todoid === todo.todoid);
