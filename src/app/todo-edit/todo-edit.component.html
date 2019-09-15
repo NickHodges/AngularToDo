@@ -8,6 +8,9 @@
 <div *ngIf="editNoteForm" class="container form-group">
   <form (ngSubmit)="onSubmitNote()" [formGroup]="editNoteForm">
     <textarea id="editNote" formControlName="editNote" class="form-control" rows="6">{{ todo?.note }}</textarea>
-    <div><button class="btn btn-primary" type="submit">Submit</button></div>
+    <div>
+      <button class="btn btn-outline-primary mr-1" type="submit">Submit</button>
+      <button class="btn btn-outline-primary" type="reset">Reset</button>
+    </div>
   </form>
 </div>

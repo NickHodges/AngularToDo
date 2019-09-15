@@ -1,12 +1,12 @@
 <hr />
 
 <div class="container">
-  <h3>Note for "{{ todo?.title }}"</h3>
-  <span class="text-right">
-    <button (click)="onEditNote(todo)" class="btn btn-primary">
-      &#x270e;
+  <div class="row d-flex justify-content-between">
+    <h3>Note for "{{ todo?.title }}"</h3>
+    <button (click)="onEditNote(todo)" class="btn btn-outline-primary float-right">
+      Edit &#x270e;
     </button>
-  </span>
+  </div>
 </div>
 
 <div class="container" id="green-corners">
