@@ -1,13 +1,13 @@
 // This file was added in Step 5
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  //private rootURL: string = 'http://localhost:3000';
-  private rootURL: string = 'https://my-json-server.typicode.com/nickhodges/TodoData';
+  //private rootURL: string = 'http://localhost:3000/todos';
+  private rootURL: string = 'https://my-json-server.typicode.com/nickhodges/TodoData/todos';
   ToDosChanged = new EventEmitter<Todo>();
 
   constructor(private aHttpService: HttpClient) {}
