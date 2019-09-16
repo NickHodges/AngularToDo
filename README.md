@@ -7,19 +7,17 @@ This project illustrates many of the basic features of a fairly robust Angular a
 It demonstrates a number of Angular features, including:
 
 - Components
-- Modules
 - Routing
 - Databinding
 - Events
+- HTTP Services and use of a REST API
 - Reactive Forms
-- HTTP Services
 - Use of Observables
-- Directives
-- Validation
-- Custom Validation
-- Building and processing Forms
-- Dividing applications into modules
-
+- Component Lifecyle
+- Directives, Structural Directives, and Custom Directives
+- Validation and Custom Validation
+- Dependency Injection of Services
+- use of &lt;ngcontent&gt;
 
 ## Process
 
@@ -34,8 +32,8 @@ The document ToDoChanges.md describes each step and what new code has been added
 Here's my suggestion for getting set up and running.
 
 1. Pull the code for this project into a directory on your local machine.
-2. If you aren't already set up for Anguler, open up the slides found in the `slides` directory and follow the directions for getting setup, including installing Angular, Angular Material, json-server, etc. (Note the last one -- you'll need it for the HTTP service).
+2. If you aren't already set up for Anguler, open up the slides found in the `slides` directory on the master branch and follow the directions for getting setup, including installing Angular, json-server, etc. (Note the last one -- you'll need it for the HTTP service).
 3. Open a command prompt (preferably PowerShell) and navigate to the directory that you put the code in.
 4. Type the following: `ng serve --open`. This will start and open the main application. Minimize this command prompt window and just leave it. The application will automatically update in the browser as you progress through the steps.
-5. Go to the branch Step2 and find the file `db.json`. Put it into a separate directory. Open a command prompt in that directory and type the following: 'json-server --watch db.json`. Minimize the command prompt window and leave it there. This will be the source of data for the Todo application.
+5. Go to the branch Step2 and find the file `db.json`. Put it into a separate directory. Open a command prompt in that directory and type the following: `json-server --watch db.json`. Minimize the command prompt window and leave it there. This will be the source of data for the Todo application.
 6. At this point, you should be ready to go through each step (branch) and see the application slowly getting built.
