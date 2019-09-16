@@ -7,18 +7,17 @@ This project illustrates many of the basic features of a fairly robust Angular a
 It demonstrates a number of Angular features, including:
 
 - Components
-- Modules
 - Routing
 - Databinding
 - Events
+- HTTP Services and use of a REST API
 - Reactive Forms
-- HTTP Services
 - Use of Observables
-- Directives
-- Validation
-- Custom Validation
-- Building and using Forms and Form Data
-- Dividing application into modules
+- Component Lifecyle
+- Directives, Structural Directives, and Custom Directives
+- Validation and Custom Validation
+- Dependency Injection of Services
+- use of &lt;ngcontent&gt;
 
 ## Process
 
