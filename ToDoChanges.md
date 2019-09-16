@@ -233,3 +233,14 @@
 - Add note field to Todo class
 - Add getTodoById to the data service
 - Add child paths to routes
+
+## Step 20
+
+### Lesson
+
+- Add ability to edit notes.
+
+### Changes
+
+- Add todo-edit component
+- Add another child route to edit when called.
