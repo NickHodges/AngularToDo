@@ -233,4 +233,3 @@
 - Add note field to Todo class
 - Add getTodoById to the data service
 - Add child paths to routes
-
