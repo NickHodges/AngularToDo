@@ -220,3 +220,27 @@
 
 - Create a new directive called 'ngIfNot'
 - Add directive to HTML
+
+## Step 19
+
+### Lesson
+
+- Add ability to diplay note.
+- Illustrate child routes
+
+### Changes
+
+- Add note field to Todo class
+- Add getTodoById to the data service
+- Add child paths to routes
+
+## Step 20
+
+### Lesson
+
+- Add ability to edit notes.
+
+### Changes
+
+- Add todo-edit component
+- Add another child route to edit when called.
