@@ -1,3 +1,5 @@
+// This file was added in Step 4
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
