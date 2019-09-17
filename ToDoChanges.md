@@ -158,7 +158,6 @@
 
 - Add Contact form with basic validation
 
-
 ### Changes
 
 - Add HTML contact form
