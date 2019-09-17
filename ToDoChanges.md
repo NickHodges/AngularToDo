@@ -21,6 +21,7 @@
 ### Changes
 
 - `npm -g install json-server`
+- Run with `json-server -i todoid --watch db.json`
 - Check functionality at `http://localhost:3000`
 
 ## Step 3
@@ -92,6 +93,7 @@
 ### Changes
 
 - Added completed/incompleted methods to Todo page and to DataService
+- Use of *ngIf
 - Updated HTML to display Todos
 - Subscription to track Observables
 
@@ -148,12 +150,14 @@
 
 - update HTML to add an input box when you click on an item
 - Code to update the text of an incomplete todo
+- Added HttpParams to query for complete/incomplete
 
 ## Step 13
 
 ### Lesson
 
 - Add Contact form with basic validation
+
 
 ### Changes
 
