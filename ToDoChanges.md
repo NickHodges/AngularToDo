@@ -93,5 +93,6 @@
 ### Changes
 
 - Added completed/incompleted methods to Todo page and to DataService
+- Use of *ngIf
 - Updated HTML to display Todos
 - Subscription to track Observables
