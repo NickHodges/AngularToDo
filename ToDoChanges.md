@@ -21,6 +21,7 @@
 ### Changes
 
 - `npm -g install json-server`
+- Run with `json-server -i todoid --watch db.json`
 - Check functionality at `http://localhost:3000`
 
 ## Step 3
@@ -53,7 +54,6 @@
 - Updated `styles.css` to set container styles
 - Add PageNotFoundComponent, redirecting there for unknown paths
 - Add attributes to manage active item on navbar
-
 
 ## Step 5
 
@@ -93,6 +93,7 @@
 ### Changes
 
 - Added completed/incompleted methods to Todo page and to DataService
+- Use of *ngIf
 - Updated HTML to display Todos
 - Subscription to track Observables
 
