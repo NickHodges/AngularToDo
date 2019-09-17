@@ -21,4 +21,5 @@
 ### Changes
 
 - `npm -g install json-server`
+- Run with `json-server -i todoid --watch db.json`
 - Check functionality at `http://localhost:3000`
