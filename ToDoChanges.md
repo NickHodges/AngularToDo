@@ -221,7 +221,7 @@
 
 ### Changes
 
-- Create a new directive called 'ngIfNot'
+- Create a new directive called `ngIfNot`
 - Add directive to HTML
 
 ## Step 19
