@@ -230,9 +230,10 @@
 
 - Add ability to diplay note.
 - Illustrate child routes
+- Create new componennt to handle displaying note
 
 ### Changes
 
-- Add note field to Todo class
-- Add getTodoById to the data service
+- Add `note` field to Todo class
+- Add `getTodoById` to the data service
 - Add child paths to routes
