@@ -193,7 +193,7 @@
 
 ### Lesson
 
-- See component lifecylce events
+- See component lifecycle events
 
 ### Changes
 
