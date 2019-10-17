@@ -6,6 +6,11 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
   selector: '[ngIfNot]',
 })
 export class ngIfNotDirective {
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private viewContainerRef: ViewContainerRef
+  ) { }
+
   @Input() set ngIfNot(condition: boolean) {
     // property has to be the same name.
     if (!condition) {
@@ -17,8 +22,5 @@ export class ngIfNotDirective {
     }
   }
 
-  constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainerRef: ViewContainerRef
-  ) {}
+
 }
