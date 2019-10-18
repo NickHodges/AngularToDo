@@ -228,7 +228,7 @@
 
 ### Lesson
 
-- Add ability to diplay note.
+- Add ability to display note.
 - Illustrate child routes
 - Create new componennt to handle displaying note
 
