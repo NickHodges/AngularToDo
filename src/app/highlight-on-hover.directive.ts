@@ -1,4 +1,5 @@
 // This file was added for Step 17
+// Can be added with `ng generate directive highlightOnHover`
 
 import {
   Directive,
