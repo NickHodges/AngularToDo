@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "NickTodo"
+  "defaultProject": "NickTodo",
+  "cli": {
+    "analytics": "0231fa74-2e7b-4b77-ac6d-bb633f75385e"
+  }
 }
