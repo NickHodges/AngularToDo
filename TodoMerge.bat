@@ -10,14 +10,10 @@ git commit -m "Automerge"
 git merge Step1
 pause
 
-
-
 git checkout Step3
 git commit -m "Automerge"
 git merge Step2
 pause
-
-
 
 git checkout Step4
 git commit -m "Automerge"
