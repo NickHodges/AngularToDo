@@ -6,8 +6,8 @@ import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  //private rootURL: string = 'http://localhost:3000/todos';
-  private rootURL: string = 'https://my-json-server.typicode.com/nickhodges/TodoData/todos';
+  private rootURL: string = 'http://localhost:3000/todos';
+  //private rootURL: string = 'https://my-json-server.typicode.com/nickhodges/TodoData/todos';
   ToDosChanged = new EventEmitter<Todo>();
 
   // Built-in dependency injection
