@@ -31,8 +31,8 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe;
   }
 
-  onEditNote() {
-    this.router.navigate(['edit'], { relativeTo: this.route });
-    //this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
+onEditNote() {
+    //this.router.navigate(['edit'], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 }

@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/NickTodo",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -29,6 +30,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -123,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "NickTodo"
+  "defaultProject": "NickTodo",
+  "cli": {
+    "analytics": "3b66c8d2-eaf8-413b-a0d8-c418dd94c0a5"
+  }
 }
