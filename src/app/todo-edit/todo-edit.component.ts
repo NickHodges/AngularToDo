@@ -40,14 +40,14 @@ export class TodoEditComponent implements OnInit, OnDestroy {
   onSubmitNote() {
     let newNote = this.editNoteForm.value['editNote'];
     let newTodo = this.createNewTodoWithNewNote(newNote, this.todo);
-    this.todoDataService.updateTodoById(newTodo.todoid, newTodo).subscribe((aTodo: Todo) => {
+    this.todoDataService.updateTodoById(newTodo.id, newTodo).subscribe((aTodo: Todo) => {
       this.router.navigate(['../../'], { relativeTo: this.route });
     });
   }
 
   private createNewTodoWithNewNote(aNewNote: string, aTodo: Todo): Todo {
     let tempTodo: Todo = new Todo();
-    tempTodo.todoid = aTodo.todoid;
+    tempTodo.id = aTodo.id;
     tempTodo.title = aTodo.title;
     tempTodo.note = aNewNote;
     tempTodo.editMode = aTodo.editMode;
