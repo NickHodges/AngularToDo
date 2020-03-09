@@ -60,7 +60,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   makeIncomplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.completetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
+        const index = this.completetodos.findIndex(thetodo => thetodo.id === val.id);
         this.completetodos.splice(index, 1);
         this.incompletetodos.push(val);
       })
