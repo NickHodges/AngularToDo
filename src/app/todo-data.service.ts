@@ -6,9 +6,7 @@ import { Todo } from './todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
-  //private rootURL: string = 'http://localhost:3000/todos';
-  private rootURL: string = 'https://my-json-server.typicode.com/nickhodges/TodoData/todos';
-  ToDosChanged = new EventEmitter<Todo>();
+  private rootURL: string = 'https://nicktodoapi.herokuapp.com/todos';
 
   // Built-in dependency injection
   constructor(private aHttpService: HttpClient) {}
@@ -46,7 +44,7 @@ export class TodoDataService {
   // Complete function
   toggleTodoComplete(todo: Todo): Observable<Todo> {
     todo.complete = !todo.complete;
-    return this.updateTodoById(todo.todoid, todo);
+    return this.updateTodoById(todo.id, todo);
   }
 
   // Added for Step 9
