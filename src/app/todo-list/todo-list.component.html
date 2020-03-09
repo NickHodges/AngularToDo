@@ -9,7 +9,7 @@
       <hr />
       <ul class="list-group">
         <span *ngFor="let todo of incompletetodos" style="cursor: pointer;">
-          <li class="list-group-item" highlightOnHover="yellow" [routerLink]="todo.todoid">
+          <li class="list-group-item" highlightOnHover="yellow" [routerLink]="todo.id">
             <!-- Checkbox added for Step 9 -->
             <input (click)="makeComplete(todo)" type="checkbox" class="checkbox" />
             <!-- Added for Step 12 -->
@@ -33,7 +33,7 @@
       <hr />
       <ul class="list-group">
         <span *ngFor="let todo of completetodos" style="cursor: pointer;">
-          <li class="list-group-item" highlightOnHover="pink" [routerLink]="todo.todoid">
+          <li class="list-group-item" highlightOnHover="pink" [routerLink]="todo.id">
             <span class="todo-title">{{ todo.title }}</span>
             <!-- Added for Step 10 -->
             <span (click)="makeIncomplete(todo)" class="incomplete-todo">&#x21a2;</span>
