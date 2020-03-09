@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "scully": "scully",
+    "scully:serve": "scully serve"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +24,9 @@
     "@angular/platform-browser-dynamic": "^9.0.1",
     "@angular/router": "^9.0.1",
     "@ngrx/store": "^8.6.0",
+    "@scullyio/init": "0.0.23",
+    "@scullyio/ng-lib": "latest",
+    "@scullyio/scully": "latest",
     "core-js": "^3.2.1",
     "npm-merge-driver": "^2.3.5",
     "rxjs": "^6.5.3",
@@ -46,7 +51,6 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "^5.4.2",
     "ts-node": "~8.6.2",
-    "tslint": "~6.0.0",
     "typescript": "~3.7.5"
   }
 }

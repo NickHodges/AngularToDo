@@ -22,6 +22,7 @@ import { ngIfNotDirective } from './ngIfNot.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TodoEditComponent } from './todo-edit/todo-edit.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ScullyLibModule,
   ],
   // Added for Step 5
   providers: [TodoDataService],
