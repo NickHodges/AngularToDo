@@ -49,7 +49,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   makeComplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
+        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
       })
@@ -60,7 +60,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   makeIncomplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.completetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
+        const index = this.completetodos.findIndex(thetodo => thetodo.id === val.id);
         this.completetodos.splice(index, 1);
         this.incompletetodos.push(val);
       })
@@ -70,8 +70,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
   // Added for Step 11
   removeTodo(todo: Todo) {
     this.subscriptions.add(
-      this.todoDataService.deleteTodoById(todo.todoid).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo.todoid === todo.todoid);
+      this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
+        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === todo.id);
         this.incompletetodos.splice(index, 1);
       })
     );
@@ -87,8 +87,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     todo.title = editInput.value;
     todo.editMode = false;
     this.subscriptions.add(
-      this.todoDataService.updateTodoById(todo.todoid, todo).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo.todoid === val.todoid);
+      this.todoDataService.updateTodoById(todo.id, todo).subscribe(val => {
+        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
         this.incompletetodos[index] = todo;
       })
     );
