@@ -248,3 +248,14 @@
 
 - Add todo-edit component
 - Add another child route to edit when called.
+
+## Step 21
+
+### Lesson
+
+- Use ngRx to store and display a name
+
+### Changes
+
+- Added components to gather and display name.
+- Added files to support use of ngRx to store a name.
