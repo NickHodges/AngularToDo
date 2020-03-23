@@ -3,4 +3,3 @@
 import { createAction, props } from '@ngrx/store';
 
 export const setName = createAction('[Name Component] Set', props<{ name: string }>());
-export const clearName = createAction('[Name Component] Clear');
