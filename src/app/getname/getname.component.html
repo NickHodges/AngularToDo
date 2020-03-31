@@ -1,0 +1,11 @@
+<!-- This file added in Step 21  -->
+<div class="container">
+  <div class="app-setName">
+    <div class="input-group">
+      <input [(ngModel)]="userName" (keyup.enter)="setUserName(userName)" class="form-control" style="margin-right: 3px" type="text" placeholder="Tell me your name" />
+      <span class="input-group-btn">
+        <button class="btn btn-primary" (click)="setUserName(userName)">Set Name</button>
+      </span>
+    </div>
+  </div>
+</div>
