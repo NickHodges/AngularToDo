@@ -15,9 +15,9 @@
       </div>
       <!-- Added for Step 22 -->
       <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="register">Register</a>
-        <a class="nav-item nav-link" routerLink="login">Login</a>
-        <a class="nav-item nav-link" routerLink="logout">Logout</a>
+        <a class="nav-item nav-link" *ngIf="isLoggedOut$ | async" routerLink="register">Register</a>
+        <a class="nav-item nav-link" *ngIf="isLoggedOut$ | async" routerLink="login">Login</a>
+        <a class="nav-item nav-link" *ngIf="isLoggedIn$ | async" routerLink="logout">Logout</a>
       </div>
     </div>
   </nav>

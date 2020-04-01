@@ -1,3 +1,25 @@
+<!-- Added for Step 22 -->
 <div class="container">
-  <p>register works!</p>
+  <div class="app-register">
+    <h4>Register:</h4>
+    <form [formGroup]="registerForm">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="email">Email (required)</label>
+            <input type="email" class="form-control" placeholder="Email" name="email" formControlName="email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password (required)</label>
+            <input type="password" class="form-control" placeholder="Password" name="password" formControlName="password" />
+          </div>
+          <div class="form-group">
+            <label for="password">Repeat Password (required)</label>
+            <input type="password" class="form-control" placeholder="Password" name="repeat" formControlName="repeat" />
+          </div>
+          <button class="btn btn-success btn-send" (click)="onRegister()">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
