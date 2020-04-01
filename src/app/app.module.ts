@@ -30,6 +30,7 @@ import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,7 @@ import { RegisterComponent } from './register/register.component';
     StoreModule.forRoot({ name: nameReducer })
   ],
   // Added for Step 5
-  providers: [TodoDataService],
+  providers: [TodoDataService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
