@@ -28,6 +28,8 @@ import { StoreModule } from '@ngrx/store';
 import { nameReducer } from './name.reducer';
 import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,10 @@ import { NameManagerComponent } from './name-manager/name-manager.component';
     // Added for Step 21
     GetNameComponent,
     ShowNameComponent,
-    NameManagerComponent
+    NameManagerComponent,
+    // Added for Step 22
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

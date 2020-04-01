@@ -8,6 +8,8 @@ import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
@@ -39,14 +41,16 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactComponent
   },
+  // The next two paths were added for Step 22
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  { path: 'login', component: LoginComponent },
   // Added for Step 16
   {
     path: 'lifecyclecontainer',
     component: LifeCycleContainerComponent
-  },
-  {
-    path: '**',
-    component: TodoListComponent
   },
   {
     path: 'not-found',
