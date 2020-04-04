@@ -10,6 +10,15 @@ import { AuthenticationService } from '../authentication.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
+  errors: string[] = [];
+
+  ErrorCodes = {
+    min: 'The minimum length for a password is 10 characters',
+    uppercase: 'You password mus have at least one upper case character',
+    digits: 'Your password must have at least one numeric character',
+    error_user: 'Could not create user'
+  };
+
   constructor(private fb: FormBuilder, private authService: AuthenticationService) {
     this.registerForm = this.fb.group({
       email: ['', Validators.required],
@@ -22,8 +31,14 @@ export class RegisterComponent implements OnInit {
 
   onRegister(): void {
     const formValues = this.registerForm.value;
-    this.authService.register(formValues.email, formValues.password).subscribe(() => {
-      console.log('A new user was created.');
-    }, console.error);
+
+    if (formValues.email && formValues.password && formValues.password == formValues.repeat) {
+      this.authService.register(formValues.email, formValues.password).subscribe(
+        () => {
+          console.log('A new user was successfully created.');
+        },
+        response => (this.errors = response.error.errors)
+      );
+    }
   }
 }
