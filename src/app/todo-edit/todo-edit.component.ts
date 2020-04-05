@@ -14,7 +14,7 @@ import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder } from '@angul
 })
 export class TodoEditComponent implements OnInit, OnDestroy {
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private todoDataService: TodoDataService, private router: Router) {}
-  todoid: number;
+  todoid: string;
   todo: Todo;
   subscription: Subscription;
   editNoteForm: FormGroup;
@@ -25,7 +25,7 @@ export class TodoEditComponent implements OnInit, OnDestroy {
 
   private initForm() {
     this.route.params.subscribe((params: Params) => {
-      this.todoid = +params['id'];
+      this.todoid = params['id'];
       this.subscription = this.todoDataService.getTodoById(this.todoid).subscribe((aTodo: Todo) => {
         this.todo = aTodo;
         this.editNoteForm = new FormGroup({ editNote: new FormControl(this.todo.note) });
@@ -40,14 +40,14 @@ export class TodoEditComponent implements OnInit, OnDestroy {
   onSubmitNote() {
     let newNote = this.editNoteForm.value['editNote'];
     let newTodo = this.createNewTodoWithNewNote(newNote, this.todo);
-    this.todoDataService.updateTodoById(newTodo.id, newTodo).subscribe((aTodo: Todo) => {
+    this.todoDataService.updateTodoById(newTodo._id, newTodo).subscribe((aTodo: Todo) => {
       this.router.navigate(['../../'], { relativeTo: this.route });
     });
   }
 
   private createNewTodoWithNewNote(aNewNote: string, aTodo: Todo): Todo {
     let tempTodo: Todo = new Todo();
-    tempTodo.id = aTodo.id;
+    tempTodo._id = aTodo._id;
     tempTodo.title = aTodo.title;
     tempTodo.note = aNewNote;
     tempTodo.editMode = aTodo.editMode;
