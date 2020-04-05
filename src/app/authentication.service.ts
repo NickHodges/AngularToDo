@@ -15,7 +15,7 @@ export const UNDEFINED_USER: User = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private rootURL: string = 'https://nicktodoapi.herokuapp.com/users';
+  private rootURL: string = 'http://localhost:3000/users';
   private subject: BehaviorSubject<User> = new BehaviorSubject<User>(UNDEFINED_USER);
   user$: Observable<User> = this.subject.asObservable();
   isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
