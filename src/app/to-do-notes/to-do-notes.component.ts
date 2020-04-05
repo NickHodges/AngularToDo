@@ -20,8 +20,8 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
-      this.id = params['id'];
-      this.subscription = this.todoDataService.getTodoById(this.id).subscribe((aTodo: Todo) => {
+      this._id = params['id'];
+      this.subscription = this.todoDataService.getTodoById(this._id).subscribe((aTodo: Todo) => {
         this.todo = aTodo;
       });
     });
