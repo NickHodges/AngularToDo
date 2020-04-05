@@ -55,7 +55,7 @@ export class TodoDataService {
   }
 
   // Added for Step 19
-  getTodoById(todoid: number): Observable<Todo> {
+  getTodoById(todoid: string): Observable<Todo> {
     return this.aHttpService.get<Todo>(`${this.rootURL}/${todoid}`);
   }
 }
