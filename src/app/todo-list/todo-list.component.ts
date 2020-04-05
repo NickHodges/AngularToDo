@@ -73,5 +73,20 @@ export class TodoListComponent implements OnInit, OnDestroy {
       const index = this.incompletetodos.findIndex(thetodo => thetodo._id === todo._id);
       this.incompletetodos.splice(index, 1);
     });
+  } // Added for Step 12
+  editTodo(todo: Todo) {
+    todo.editMode = true;
+  }
+
+  // Added for Step 12
+  updateTodo(todo: Todo, editInput) {
+    todo.title = editInput.value;
+    todo.editMode = false;
+    this.subscriptions.add(
+      this.todoDataService.updateTodoById(todo._id, todo).subscribe(val => {
+        const index = this.incompletetodos.findIndex(thetodo => thetodo._id === val._id);
+        this.incompletetodos[index] = todo;
+      })
+    );
   }
 }
