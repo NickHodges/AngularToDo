@@ -28,7 +28,9 @@ export class AuthenticationService {
   register(userName: string, password: string) {
     return this.httpClient.post<User>(`${this.rootURL}`, { name: userName, password: password }).pipe(
       shareReplay(),
-      tap(user => this.subject.next(user))
+      tap(user => {
+        return this.subject.next(user);
+      })
     );
   }
 
