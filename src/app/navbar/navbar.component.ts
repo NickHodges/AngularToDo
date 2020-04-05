@@ -1,8 +1,7 @@
 // Added in Step 3
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { Observable } from 'rxjs';
-import { User } from '../user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +9,20 @@ import { User } from '../user';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-  isLoggedOut$: Observable<boolean>;
+  constructor(private auth: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
-  constructor(private auth: AuthenticationService) {}
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn;
+  }
 
-  ngOnInit() {
-    this.isLoggedIn$ = this.auth.isLoggedIn$;
-    this.isLoggedOut$ = this.auth.isLoggedOut$;
+  isLoggedOut(): boolean {
+    return this.auth.isLoggedOut;
+  }
+
+  ngOnInit() {}
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['../login'], { relativeTo: this.route });
   }
 }

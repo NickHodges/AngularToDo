@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit {
 
   onRegister(): void {
     const formValues = this.registerForm.value;
-
     if (formValues.email && formValues.password && formValues.password == formValues.repeat) {
       this.authService.register(formValues.email, formValues.password).subscribe(
         () => {

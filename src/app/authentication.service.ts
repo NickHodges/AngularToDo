@@ -5,34 +5,52 @@ import { User } from './user';
 import { map, shareReplay, tap } from 'rxjs/operators';
 
 export const UNDEFINED_USER: User = {
-  id: undefined,
+  id: '',
   email: ''
 };
-
-// do (user => this.subject.next(user)
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   private rootURL: string = 'http://localhost:3000/users';
+
   private subject: BehaviorSubject<User> = new BehaviorSubject<User>(UNDEFINED_USER);
   user$: Observable<User> = this.subject.asObservable();
-  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
-  isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
+  isLoggedIn: boolean = false;
+  isLoggedOut: boolean = true;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.isLoggedIn = false;
+    this.isLoggedOut = true;
+  }
+
+  private setLoggedInInfo(user: User) {
+    this.loadUser(user);
+    console.log('HEREERERERERE!!!!: ', user);
+    this.isLoggedIn = user.id !== '';
+    console.log('isLoggedIn: ', this.isLoggedIn);
+    this.isLoggedOut = !this.isLoggedIn;
+  }
+
+  loadUser(user: User) {
+    this.subject.next(user);
+  }
 
   login(userName: string, password: string) {}
 
-  register(userName: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}`, { name: userName, password: password }).pipe(
+  register(userName: string, password: string): Observable<User> {
+    const theUser = { name: userName, password: password };
+    return this.httpClient.post<User>(`${this.rootURL}`, theUser).pipe(
       shareReplay(),
       tap(user => {
-        return this.subject.next(user);
+        this.setLoggedInInfo(user);
       })
     );
   }
 
-  logout() {}
+  logout() {
+    console.log('logout fired');
+    this.setLoggedInInfo(UNDEFINED_USER);
+  }
 }
