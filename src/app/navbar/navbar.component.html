@@ -5,18 +5,18 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav mr-auto">
-        <a class="nav-item nav-link" routerLink="todos">Checklist <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" routerLink="all-tasks">All To Dos</a>
+        <a class="nav-item nav-link" routerLink="/todos">Checklist <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="/all-tasks">All To Dos</a>
         <!-- Link added for Step 13 -->
-        <a class="nav-item nav-link" routerLink="contact">Contact</a>
+        <a class="nav-item nav-link" routerLink="/contact">Contact</a>
         <!-- Added for Step 16 -->
-        <a class="nav-item nav-link" routerLink="lifecyclecontainer">Lifecycle Demo</a>
-        <a class="nav-item nav-link" routerLink="about">About</a>
+        <a class="nav-item nav-link" routerLink="/lifecyclecontainer">Lifecycle Demo</a>
+        <a class="nav-item nav-link" routerLink="/about">About</a>
       </div>
       <!-- Added for Step 22 -->
       <div class="navbar-nav">
-        <a class="nav-item nav-link" *ngIf="isLoggedOut()" routerLink="register">Register</a>
-        <a class="nav-item nav-link" *ngIf="isLoggedOut()" routerLink="login">Login</a>
+        <a class="nav-item nav-link" *ngIf="isLoggedOut()" routerLink="/register">Register</a>
+        <a class="nav-item nav-link" *ngIf="isLoggedOut()" routerLink="/login">Login</a>
         <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
       </div>
     </div>
