@@ -1,6 +1,11 @@
 <!-- Added for Step 22 -->
 <div class="container">
   <div class="app-register">
+    <div class="alert alert-danger" *ngIf="errors?.length">
+      <div>
+        <div *ngFor="let error of errors">{{ ErrorCodes[error] }}</div>
+      </div>
+    </div>
     <h4>Register:</h4>
     <form [formGroup]="registerForm">
       <div class="row">

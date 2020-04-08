@@ -14,10 +14,9 @@ export class RegisterComponent implements OnInit {
   errors: string[] = [];
 
   ErrorCodes = {
-    min: 'The minimum length for a password is 10 characters',
-    uppercase: 'You password mus have at least one upper case character',
-    digits: 'Your password must have at least one numeric character',
-    error_user: 'Could not create user'
+    min: 'The minimum length is 10 characters',
+    uppercase: 'At least one upper case character',
+    digits: 'At least one numeric character'
   };
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {
@@ -38,7 +37,9 @@ export class RegisterComponent implements OnInit {
           console.log('A new user was successfully created.');
           this.router.navigate(['../'], { relativeTo: this.route });
         },
-        response => (this.errors = response.error.errors)
+        response => {
+          this.errors = response.error;
+        }
       );
     }
   }
