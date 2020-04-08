@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,6 +31,7 @@ import { NameManagerComponent } from './name-manager/name-manager.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
+import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,15 @@ import { AuthenticationService } from './authentication.service';
     StoreModule.forRoot({ name: nameReducer })
   ],
   // Added for Step 5
-  providers: [TodoDataService, AuthenticationService],
+  providers: [
+    TodoDataService,
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: EnsureCredentialsInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
