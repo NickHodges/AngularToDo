@@ -40,8 +40,6 @@ export class AuthenticationService {
 
   register(userName: string, password: string): Observable<User> {
     const theUser = { email: userName, password: password };
-    console.log(theUser);
-
     return this.httpClient.post<User>(`${this.rootURL}`, theUser).pipe(
       shareReplay(),
       tap(user => {
@@ -51,7 +49,6 @@ export class AuthenticationService {
   }
 
   logout() {
-    console.log('logout fired');
     this.setLoggedInInfo(UNDEFINED_USER);
   }
 }
