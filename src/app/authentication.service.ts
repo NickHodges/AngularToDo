@@ -27,10 +27,9 @@ export class AuthenticationService {
 
   private setLoggedInInfo(user: User) {
     this.loadUser(user);
-    console.log('HEREERERERERE!!!!: ', user);
     this.isLoggedIn = user.id !== '';
-    console.log('isLoggedIn: ', this.isLoggedIn);
     this.isLoggedOut = !this.isLoggedIn;
+    this.subject.next(user);
   }
 
   loadUser(user: User) {
@@ -40,7 +39,9 @@ export class AuthenticationService {
   login(userName: string, password: string) {}
 
   register(userName: string, password: string): Observable<User> {
-    const theUser = { name: userName, password: password };
+    const theUser = { email: userName, password: password };
+    console.log(theUser);
+
     return this.httpClient.post<User>(`${this.rootURL}`, theUser).pipe(
       shareReplay(),
       tap(user => {
