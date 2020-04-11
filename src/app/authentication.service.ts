@@ -36,6 +36,10 @@ export class AuthenticationService {
     this.login(UNDEFINED_USER);
   }
 
+  isLoggedIn(): boolean {
+    return this.isLoggedIn$.getValue();
+  }
+
   register(userName: string, password: string): Observable<User> {
     const theUser = { email: userName, password: password };
     return this.httpClient.post<User>(`${this.rootURL}/users`, theUser).pipe(
