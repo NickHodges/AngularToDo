@@ -10,6 +10,7 @@ import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { SorryComponent } from './sorry/sorry.component';
 
 export const routes: Routes = [
   {
@@ -41,12 +42,13 @@ export const routes: Routes = [
     path: 'contact',
     component: ContactComponent
   },
-  // The next two paths were added for Step 22
+  // The next three paths were added for Step 22
   {
     path: 'register',
     component: RegisterComponent
   },
   { path: 'login', component: LoginComponent },
+  { path: 'sorry', component: SorryComponent },
   // Added for Step 16
   {
     path: 'lifecyclecontainer',
