@@ -12,8 +12,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   constructor(public auth: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
-  isLoggedIn: boolean;
-
   ngOnInit() {}
 
   logout() {
