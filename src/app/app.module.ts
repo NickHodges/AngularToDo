@@ -32,6 +32,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
 import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
+import { SorryComponent } from './sorry/sorry.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
     NameManagerComponent,
     // Added for Step 22
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SorryComponent
   ],
   imports: [
     BrowserModule,
