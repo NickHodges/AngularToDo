@@ -13,19 +13,23 @@ export const UNDEFINED_USER: User = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private rootURL: string = 'https://localhost:3000/users';
+  private rootURL: string = 'https://localhost:3000';
 
-  private useSubject: BehaviorSubject<User> = new BehaviorSubject<User>(UNDEFINED_USER);
-  user$: Observable<User> = this.useSubject.asObservable();
+  private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined);
+  user$: Observable<User> = this.userSubject.asObservable().pipe(filter(user => !!user));
   isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private httpClient: HttpClient) {
-    this.login(UNDEFINED_USER);
+    httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
+      const theUser = user ? user : UNDEFINED_USER;
+      this.login(theUser);
+      return this.userSubject.next(theUser);
+    });
   }
 
   login(user: User) {
     this.isLoggedIn$.next(!(user === UNDEFINED_USER));
-    this.useSubject.next(user);
+    this.userSubject.next(user);
   }
 
   logout() {
@@ -34,7 +38,7 @@ export class AuthenticationService {
 
   register(userName: string, password: string): Observable<User> {
     const theUser = { email: userName, password: password };
-    return this.httpClient.post<User>(`${this.rootURL}`, theUser).pipe(
+    return this.httpClient.post<User>(`${this.rootURL}/users`, theUser).pipe(
       shareReplay(),
       tap(user => {
         this.login(user);
