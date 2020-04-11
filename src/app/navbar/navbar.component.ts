@@ -1,23 +1,18 @@
 // Added in Step 3
-import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  constructor(private auth: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
+  constructor(public auth: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
-  isLoggedIn(): boolean {
-    return this.auth.isLoggedIn;
-  }
-
-  isLoggedOut(): boolean {
-    return this.auth.isLoggedOut;
-  }
+  isLoggedIn: boolean;
 
   ngOnInit() {}
 

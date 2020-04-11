@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from './user';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay, tap, filter } from 'rxjs/operators';
 
 export const UNDEFINED_USER: User = {
   id: '',
@@ -13,42 +13,32 @@ export const UNDEFINED_USER: User = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private rootURL: string = 'http://localhost:3000/users';
+  private rootURL: string = 'https://localhost:3000/users';
 
-  private subject: BehaviorSubject<User> = new BehaviorSubject<User>(UNDEFINED_USER);
-  user$: Observable<User> = this.subject.asObservable();
-  isLoggedIn: boolean = false;
-  isLoggedOut: boolean = true;
+  private useSubject: BehaviorSubject<User> = new BehaviorSubject<User>(UNDEFINED_USER);
+  user$: Observable<User> = this.useSubject.asObservable();
+  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private httpClient: HttpClient) {
-    this.isLoggedIn = false;
-    this.isLoggedOut = true;
+    this.login(UNDEFINED_USER);
   }
 
-  private setLoggedInInfo(user: User) {
-    this.loadUser(user);
-    this.isLoggedIn = user.id !== '';
-    this.isLoggedOut = !this.isLoggedIn;
-    this.subject.next(user);
+  login(user: User) {
+    this.isLoggedIn$.next(!(user === UNDEFINED_USER));
+    this.useSubject.next(user);
   }
 
-  loadUser(user: User) {
-    this.subject.next(user);
+  logout() {
+    this.login(UNDEFINED_USER);
   }
-
-  login(userName: string, password: string) {}
 
   register(userName: string, password: string): Observable<User> {
     const theUser = { email: userName, password: password };
     return this.httpClient.post<User>(`${this.rootURL}`, theUser).pipe(
       shareReplay(),
       tap(user => {
-        this.setLoggedInInfo(user);
+        this.login(user);
       })
     );
-  }
-
-  logout() {
-    this.setLoggedInInfo(UNDEFINED_USER);
   }
 }
