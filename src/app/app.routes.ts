@@ -11,6 +11,7 @@ import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SorryComponent } from './sorry/sorry.component';
+import { AuthGuardService } from './auth-guard.service';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,7 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodoListComponent,
+    canActivate: [AuthGuardService],
     // children paths added for Step 19
     children: [
       {
@@ -32,7 +34,8 @@ export const routes: Routes = [
   },
   {
     path: 'all-tasks',
-    component: AllTasksComponent
+    component: AllTasksComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'about',
