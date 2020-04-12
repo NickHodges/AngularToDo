@@ -32,12 +32,18 @@ export class AuthenticationService {
     this.userSubject.next(user);
   }
 
-  logout() {
-    this.login(UNDEFINED_USER);
+  logout(): Observable<any>  {
+    return this.httpClient.post(`${this.rootURL}/logout`, null).pipe(
+      shareReplay(),
+      tap(() => {
+        this.login(UNDEFINED_USER);
+    
+      })
+    );
   }
 
-  isLoggedIn(): boolean {
-    return this.isLoggedIn$.getValue();
+  userIsLoggedIn(): boolean {
+    return this.isLoggedIn$.value;
   }
 
   register(userName: string, password: string): Observable<User> {
