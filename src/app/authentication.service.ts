@@ -6,6 +6,7 @@ import { map, shareReplay, tap, filter } from 'rxjs/operators';
 
 export const UNDEFINED_USER: User = {
   id: '',
+  password: '',
   email: ''
 };
 
@@ -22,22 +23,21 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) {
     httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
       const theUser = user ? user : UNDEFINED_USER;
-      this.login(theUser);
+      this.trackLoginInfo(theUser);
       return this.userSubject.next(theUser);
     });
   }
 
-  login(user: User) {
+  trackLoginInfo(user: User) {
     this.isLoggedIn$.next(!(user === UNDEFINED_USER));
     this.userSubject.next(user);
   }
 
-  logout(): Observable<any>  {
+  logout(): Observable<any> {
     return this.httpClient.post(`${this.rootURL}/logout`, null).pipe(
       shareReplay(),
       tap(() => {
-        this.login(UNDEFINED_USER);
-    
+        this.trackLoginInfo(UNDEFINED_USER);
       })
     );
   }
@@ -51,7 +51,17 @@ export class AuthenticationService {
     return this.httpClient.post<User>(`${this.rootURL}/users`, theUser).pipe(
       shareReplay(),
       tap(user => {
-        this.login(user);
+        this.trackLoginInfo(user);
+      })
+    );
+  }
+
+  login(userName: string, password: string): Observable<User> {
+    const theUser: User = { email: userName, password: password };
+    return this.httpClient.post<User>(`${this.rootURL}/login`, theUser).pipe(
+      shareReplay(),
+      tap(user => {
+        this.trackLoginInfo(user);
       })
     );
   }
