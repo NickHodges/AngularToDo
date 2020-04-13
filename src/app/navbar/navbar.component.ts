@@ -2,6 +2,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +12,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  constructor(public auth: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
+  isLoggedIn$: Observable<boolean>;
+  isLoggedOut: boolean;
 
-  ngOnInit() {}
+  constructor(public authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    this.isLoggedIn$ = this.authService.isUserLoggedIn;
+  }
 
   logout() {
-    this.auth.logout().subscribe(() => {});
+    this.authService.logout().subscribe(() => {});
     this.router.navigate(['../login'], { relativeTo: this.route });
   }
 }

@@ -33,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
 import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { SorryComponent } from './sorry/sorry.component';
       provide: HTTP_INTERCEPTORS,
       useClass: EnsureCredentialsInterceptor,
       multi: true
-    }
+    },
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
