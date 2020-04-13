@@ -43,7 +43,7 @@ export class AuthenticationService {
   }
 
   private setLoginValues(user: User) {
-    localStorage.setItem('token', 'true');
+    localStorage.setItem('token', 'Here is a token!');
     this.loggedIn.next(true);
     return this.subject.next(user);
   }
