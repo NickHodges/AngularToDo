@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
-import { Router } from '@angular/router';
-import { User } from '../user';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import { User } from '../user';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
 
     if (val.password && val.email) {
       this.authService.login(val.email, val.password).subscribe(() => {
-        this.router.navigateByUrl('/todos');
+        this.router.navigate(['../todos'], { relativeTo: this.route });
       });
     }
   }

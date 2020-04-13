@@ -26,7 +26,7 @@ export const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: ToDoNotesComponent
+        component: ToDoNotesComponent,
       },
       // Added for Step 20
       { path: ':id/edit', component: TodoEditComponent }

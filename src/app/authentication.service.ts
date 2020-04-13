@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from './user';
-import { map, shareReplay, tap, filter } from 'rxjs/operators';
+import { shareReplay, tap, filter } from 'rxjs/operators';
 
 export const UNDEFINED_USER: User = {
   id: '',
@@ -15,6 +15,7 @@ export const UNDEFINED_USER: User = {
 })
 export class AuthenticationService {
   private rootURL: string = 'https://localhost:3000';
+  private currentUser: User;
 
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(undefined);
   user$: Observable<User> = this.userSubject.asObservable().pipe(filter(user => !!user));
@@ -23,27 +24,29 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) {
     httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
       const theUser = user ? user : UNDEFINED_USER;
-      this.trackLoginInfo(theUser);
+      this.setLoginInfo(theUser, user !== UNDEFINED_USER);
       return this.userSubject.next(theUser);
     });
   }
 
-  trackLoginInfo(user: User) {
-    this.isLoggedIn$.next(!(user === UNDEFINED_USER));
+  setLoginInfo(user: User, loggedIn: boolean) {
+    console.log('flew threw setLoginInfo, and user is: ', user);
+    this.isLoggedIn$.next(loggedIn);
     this.userSubject.next(user);
+    this.currentUser = loggedIn ? user : UNDEFINED_USER;
   }
 
   logout(): Observable<any> {
     return this.httpClient.post(`${this.rootURL}/logout`, null).pipe(
       shareReplay(),
       tap(() => {
-        this.trackLoginInfo(UNDEFINED_USER);
+        this.setLoginInfo(UNDEFINED_USER, false);
       })
     );
   }
 
   userIsLoggedIn(): boolean {
-    return this.isLoggedIn$.value;
+    return this.currentUser !== UNDEFINED_USER;
   }
 
   register(userName: string, password: string): Observable<User> {
@@ -51,7 +54,7 @@ export class AuthenticationService {
     return this.httpClient.post<User>(`${this.rootURL}/users`, theUser).pipe(
       shareReplay(),
       tap(user => {
-        this.trackLoginInfo(user);
+        this.setLoginInfo(user, user.email !== '');
       })
     );
   }
@@ -61,7 +64,7 @@ export class AuthenticationService {
     return this.httpClient.post<User>(`${this.rootURL}/login`, theUser).pipe(
       shareReplay(),
       tap(user => {
-        this.trackLoginInfo(user);
+        this.setLoginInfo(user, user.email !== '');
       })
     );
   }
