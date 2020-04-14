@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
     this.errors = [];
     if (formValues.password !== formValues.repeat) {
       this.errors = ['match'];
-      console.log('errors', this.errors);
       return;
     }
     if (formValues.email && formValues.password && formValues.password == formValues.repeat) {
