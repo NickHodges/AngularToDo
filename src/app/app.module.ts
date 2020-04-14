@@ -13,7 +13,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDataService } from './utils/todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ContactComponent } from './contact/contact.component';
-import { PhoneCharactersOnlyDirective } from './app.directives';
+import { PhoneCharactersOnlyDirective } from './utils/app.directives';
 import { AboutContentComponent } from './about-content/about-content.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-container.component';

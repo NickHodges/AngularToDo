@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../utils/todo-data.service';
-import { Todo } from '../todo';
+import { Todo } from '../models/todo';
 import { Observable } from 'rxjs';
 
 @Component({

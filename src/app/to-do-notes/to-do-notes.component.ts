@@ -3,7 +3,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TodoDataService } from '../utils/todo-data.service';
-import { Todo } from '../todo';
+import { Todo } from '../models/todo';
 import { Subscription } from 'rxjs';
 
 @Component({

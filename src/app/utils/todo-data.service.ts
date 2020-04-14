@@ -2,7 +2,7 @@
 import { Observable } from 'rxjs';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Todo } from '../todo';
+import { Todo } from '../models/todo';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
