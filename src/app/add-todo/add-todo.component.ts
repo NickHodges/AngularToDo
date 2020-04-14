@@ -1,7 +1,7 @@
 // This file added in Step 8
 
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../todo';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'app-add-todo',

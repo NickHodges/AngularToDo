@@ -10,30 +10,30 @@ import { routes } from './app.routes';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 import { AboutComponent } from './about/about.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoDataService } from './todo-data.service';
+import { TodoDataService } from './utils/todo-data.service';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { ContactComponent } from './contact/contact.component';
 import { PhoneCharactersOnlyDirective } from './utils/app.directives';
 import { AboutContentComponent } from './about-content/about-content.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-container.component';
-import { HighlightOnHoverDirective } from './highlight-on-hover.directive';
-import { ngIfNotDirective } from './ngIfNot.directive';
+import { HighlightOnHoverDirective } from './utils/highlight-on-hover.directive';
+import { ngIfNotDirective } from './utils/ngIfNot.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { GetNameComponent } from './getname/getname.component';
 import { StoreModule } from '@ngrx/store';
-import { nameReducer } from './name.reducer';
+import { nameReducer } from './utils/name.reducer';
 import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './utils/authentication.service';
 import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './utils/auth-guard.service';
 
 @NgModule({
   declarations: [

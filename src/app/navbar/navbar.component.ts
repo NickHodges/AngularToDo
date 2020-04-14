@@ -1,6 +1,6 @@
 // Added in Step 3
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../utils/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';

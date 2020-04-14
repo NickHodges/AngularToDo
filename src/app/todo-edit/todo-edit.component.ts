@@ -2,9 +2,9 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Todo } from '../todo';
+import { Todo } from '../models/todo';
 import { Subscription } from 'rxjs';
-import { TodoDataService } from '../todo-data.service';
+import { TodoDataService } from '../utils/todo-data.service';
 import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
