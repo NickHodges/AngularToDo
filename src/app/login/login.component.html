@@ -1,6 +1,9 @@
 <!-- Added for Step 22 -->
 <div class="container">
   <div class="app-login">
+    <div class="alert alert-danger" *ngIf="!!errorMessage">
+      <div>{{ errorMessage }}</div>
+    </div>
     <h4>Login:</h4>
     <form [formGroup]="loginForm">
       <div class="row">
