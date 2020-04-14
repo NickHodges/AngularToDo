@@ -27,10 +27,7 @@ export class PhoneCharactersOnlyDirective {
     }
 
     // if the key is a phone or navigation key, let it through
-    if (
-      KeyValues.navigationKeys.indexOf(e.key) !== -1 ||
-      KeyValues.OkForPhoneInputControl.indexOf(e.key) !== -1
-    ) {
+    if (KeyValues.navigationKeys.indexOf(e.key) !== -1 || KeyValues.OkForPhoneInputControl.indexOf(e.key) !== -1) {
       return;
     }
 
@@ -43,9 +40,7 @@ export class PhoneCharactersOnlyDirective {
   @HostListener('paste', ['$event'])
   onPaste(event: ClipboardEvent) {
     event.preventDefault();
-    const pastedInput: string = event.clipboardData
-      .getData('text/plain')
-      .replace(/\D/g, ''); // get a digit-only string
+    const pastedInput: string = event.clipboardData.getData('text/plain').replace(/\D/g, ''); // get a digit-only string
     document.execCommand('insertText', false, pastedInput);
   }
 
