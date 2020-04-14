@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit {
   ErrorCodes = {
     min: 'The minimum length is 10 characters',
     uppercase: 'At least one upper case character',
-    digits: 'At least one numeric character'
+    digits: 'At least one numeric character',
+    match: 'The two passwords have to match'
   };
 
   constructor(private fb: FormBuilder, private authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {
@@ -31,6 +32,12 @@ export class RegisterComponent implements OnInit {
 
   onRegister(): void {
     const formValues = this.registerForm.value;
+    this.errors = [];
+    if (formValues.password !== formValues.repeat) {
+      this.errors = ['match'];
+      console.log('errors', this.errors);
+      return;
+    }
     if (formValues.email && formValues.password && formValues.password == formValues.repeat) {
       this.authService.register(formValues.email, formValues.password).subscribe(
         () => {
