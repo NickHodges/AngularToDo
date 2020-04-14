@@ -16,7 +16,8 @@ import { AuthGuardService } from './utils/auth-guard.service';
 export const routes: Routes = [
   {
     path: '',
-    component: TodoListComponent
+    redirectTo: 'todos',
+    pathMatch: 'full'
   },
   {
     path: 'todos',
@@ -26,7 +27,7 @@ export const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: ToDoNotesComponent,
+        component: ToDoNotesComponent
       },
       // Added for Step 20
       { path: ':id/edit', component: TodoEditComponent }
