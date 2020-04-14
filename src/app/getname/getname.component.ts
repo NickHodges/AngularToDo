@@ -2,7 +2,7 @@
 
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setName } from '../name.actions';
+import { setName } from '../utils/name.actions';
 
 @Component({
   selector: 'app-getname',

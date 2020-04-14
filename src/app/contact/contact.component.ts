@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NumberValidators } from '../app.validators';
+import { NumberValidators } from '../utils/app.validators';
 
 @Component({
   selector: 'app-contact-form',

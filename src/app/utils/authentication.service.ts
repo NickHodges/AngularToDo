@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
-import { User } from './user';
+import { User } from '../user';
 import { shareReplay, tap, filter, map } from 'rxjs/operators';
 
 export const UNDEFINED_USER: User = {
