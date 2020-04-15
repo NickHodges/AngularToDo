@@ -17,7 +17,6 @@ export class AuthenticationService {
   private rootURL: string = 'https://localhost:3000';
 
   private userSubject = new BehaviorSubject<User>(undefined);
-
   user$: Observable<User> = this.userSubject.asObservable().pipe(filter(user => !!user));
   private loggedInSubject = new BehaviorSubject<boolean>(this.tokenAvailable());
 
@@ -28,7 +27,7 @@ export class AuthenticationService {
   }
 
   private tokenAvailable(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token'); // It doesn' really matter what the token is named
   }
 
   register(email: string, password: string) {
@@ -63,10 +62,14 @@ export class AuthenticationService {
     return this.httpClient.post(`${this.rootURL}/logout`, null).pipe(
       shareReplay(),
       tap(user => {
-        localStorage.removeItem('token');
-        this.loggedInSubject.next(false);
-        return this.userSubject.next(UNDEFINED_USER);
+        return this.setLogoutValues();
       })
     );
+  }
+
+  private setLogoutValues() {
+    localStorage.removeItem('token');
+    this.loggedInSubject.next(false);
+    return this.userSubject.next(UNDEFINED_USER);
   }
 }
