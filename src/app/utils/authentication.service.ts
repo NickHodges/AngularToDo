@@ -16,14 +16,14 @@ export const UNDEFINED_USER: User = {
 export class AuthenticationService {
   private rootURL: string = 'https://localhost:3000';
 
-  private subject = new BehaviorSubject<User>(undefined);
+  private userSubject = new BehaviorSubject<User>(undefined);
 
-  user$: Observable<User> = this.subject.asObservable().pipe(filter(user => !!user));
+  user$: Observable<User> = this.userSubject.asObservable().pipe(filter(user => !!user));
   private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
 
   constructor(private httpClient: HttpClient) {
     httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
-      return this.subject.next(user ? user : UNDEFINED_USER);
+      return this.userSubject.next(user ? user : UNDEFINED_USER);
     });
   }
 
@@ -43,7 +43,7 @@ export class AuthenticationService {
   private setLoginValues(user: User) {
     localStorage.setItem('token', 'Here is a token!');
     this.loggedIn.next(true);
-    return this.subject.next(user);
+    return this.userSubject.next(user);
   }
 
   login(email: string, password: string) {
@@ -65,7 +65,7 @@ export class AuthenticationService {
       tap(user => {
         localStorage.removeItem('token');
         this.loggedIn.next(false);
-        return this.subject.next(UNDEFINED_USER);
+        return this.userSubject.next(UNDEFINED_USER);
       })
     );
   }
