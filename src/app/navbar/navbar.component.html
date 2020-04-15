@@ -17,9 +17,9 @@
       <div class="navbar-nav" *ngIf="(isLoggedIn$ | async) === true">
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" *ngIf="(isLoggedIn$ | async) === false" routerLink="/login">Login</a>
-        <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="(isLoggedIn$ | async) === false" routerLink="/register">Register</a>
+      <div class="navbar-nav" *ngIf="(isLoggedIn$ | async) === false">
+        <a class="nav-item nav-link" routerLink="/login">Login</a>
+        <a class="nav-item nav-link" style="cursor: pointer;" routerLink="/register">Register</a>
       </div>
     </div>
   </nav>
