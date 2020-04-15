@@ -19,7 +19,7 @@ export class AuthenticationService {
   private userSubject = new BehaviorSubject<User>(undefined);
 
   user$: Observable<User> = this.userSubject.asObservable().pipe(filter(user => !!user));
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  private loggedInSubject = new BehaviorSubject<boolean>(this.tokenAvailable());
 
   constructor(private httpClient: HttpClient) {
     httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
@@ -41,8 +41,8 @@ export class AuthenticationService {
   }
 
   private setLoginValues(user: User) {
-    localStorage.setItem('token', 'Here is a token!');
-    this.loggedIn.next(true);
+    localStorage.setItem('token', 'Here is a token!'); // It doesn't matter what the token is.
+    this.loggedInSubject.next(true);
     return this.userSubject.next(user);
   }
 
@@ -56,7 +56,7 @@ export class AuthenticationService {
   }
 
   get isUserLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+    return this.loggedInSubject.asObservable();
   }
 
   logout(): Observable<any> {
@@ -64,7 +64,7 @@ export class AuthenticationService {
       shareReplay(),
       tap(user => {
         localStorage.removeItem('token');
-        this.loggedIn.next(false);
+        this.loggedInSubject.next(false);
         return this.userSubject.next(UNDEFINED_USER);
       })
     );
