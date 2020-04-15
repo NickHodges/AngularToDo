@@ -20,8 +20,6 @@ export class AuthenticationService {
 
   user$: Observable<User> = this.subject.asObservable().pipe(filter(user => !!user));
   private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
-  //isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
-  //isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
 
   constructor(private httpClient: HttpClient) {
     httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
