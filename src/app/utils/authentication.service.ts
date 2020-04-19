@@ -16,24 +16,22 @@ export class AuthenticationService {
     console.log('authResult: ', authResult);
     const expiresAt = moment().add(authResult.expiresIn, 'second');
 
-    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('id_token', authResult._id);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
   register(email: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}/users`, { email, password }).pipe(
-      shareReplay(),
-      tap(user => {
-        return this.setSession;
-      })
-    );
+    return this.httpClient.post<User>('/api/login', { email, password }).pipe(tap(res => this.setSession(res)));
   }
 
   login(email: string, password: string) {
     console.log('Logging in....');
     return this.httpClient.post<User>(`${this.rootURL}/login`, { email, password }).pipe(
       shareReplay(),
-      tap(() => this.setSession)
+      tap(authResult => {
+        console.log('authResult: ', authResult);
+        return this.setSession(authResult);
+      })
     );
   }
 

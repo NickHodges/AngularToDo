@@ -12,13 +12,14 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
+  isLoggedIn: boolean;
   isLoggedOut: boolean;
 
   constructor(public authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isLoggedIn = this.authService.isLoggedIn()
+    this.isLoggedOut = !this.isLoggedIn;
   }
 
   logout() {
