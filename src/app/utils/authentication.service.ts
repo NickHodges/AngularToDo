@@ -13,6 +13,7 @@ export class AuthenticationService {
   constructor(private httpClient: HttpClient) {}
 
   private setSession(authResult) {
+    console.log('authResult: ', authResult);
     const expiresAt = moment().add(authResult.expiresIn, 'second');
 
     localStorage.setItem('id_token', authResult.idToken);
@@ -29,16 +30,19 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
+    console.log('Logging in....');
     return this.httpClient.post<User>(`${this.rootURL}/login`, { email, password }).pipe(
       shareReplay(),
-      tap(user => {
-        return this.setSession;
-      })
+      tap(() => this.setSession)
     );
   }
 
-  get isUserLoggedIn(): boolean {
+  public isLoggedIn(): boolean {
     return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
   }
 
   getExpiration() {
