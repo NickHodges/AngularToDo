@@ -10,9 +10,10 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
   private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
   private rootURL: string = 'https://localhost:3000';
+  private currUser: string = 'currentUser';
 
   constructor(private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(this.currUser)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -21,7 +22,7 @@ export class AuthenticationService {
   }
 
   private tokenAvailable(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem(this.currUser);
   }
 
   get isLoggedIn(): Observable<boolean> {
@@ -29,7 +30,6 @@ export class AuthenticationService {
   }
 
   private setLoginValues(user: User) {
-    localStorage.setItem('token', 'Here is a token!');
     this.loggedIn.next(true);
     return this.currentUserSubject.next(user);
   }
@@ -38,7 +38,7 @@ export class AuthenticationService {
     return this.httpClient.post<User>(`${this.rootURL}/login`, { email: username, password: password }).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem(this.currUser, JSON.stringify(user));
           this.setLoginValues(user);
           return user;
         } else {
@@ -49,9 +49,8 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem(this.currUser);
     this.currentUserSubject.next(null);
-    localStorage.removeItem('token');
     this.loggedIn.next(false);
   }
 
