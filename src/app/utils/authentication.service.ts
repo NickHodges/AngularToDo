@@ -58,8 +58,8 @@ export class AuthenticationService {
     return this.currentUserSubject.next(user);
   }
 
-  login(username: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}/login`, { email: username, password: password }).pipe(
+  login(email: string, password: string) {
+    return this.httpClient.post<User>(`${this.rootURL}/login`, { email: email, password: password }).pipe(
       map(user => {
         if (user) {
           localStorage.setItem(this.currUser, JSON.stringify(user));
