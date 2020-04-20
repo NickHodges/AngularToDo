@@ -1,7 +1,8 @@
 // Class added for Step 22
 
-export interface User {
-  id?: string;
-  email: string;
+export class User {
+  id: string;
+  username: string;
   password: string;
+  token?: string;
 }
