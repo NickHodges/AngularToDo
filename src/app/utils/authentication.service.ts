@@ -36,8 +36,10 @@ export class AuthenticationService {
     if (currentUser) {
       const token = currentUser.token;
       const tokenInfo = this.getDecodedAccessToken(token);
-      if (Date.now() <= tokenInfo.exp * 1000) {
-        return true;
+      if (tokenInfo) {
+        if (Date.now() <= tokenInfo.exp * 1000) {
+          return true;
+        }
       }
     }
     return false;
