@@ -1,3 +1,4 @@
+import { LogoutGuard } from './utils/logout.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -97,7 +98,8 @@ import { AuthGuardService } from './utils/auth-guard.service';
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    AuthGuardService
+    AuthGuardService,
+    LogoutGuard
   ],
   bootstrap: [AppComponent]
 })

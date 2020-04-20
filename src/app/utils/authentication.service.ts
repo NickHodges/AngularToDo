@@ -55,9 +55,10 @@ export class AuthenticationService {
   }
 
   register(email: string, password: string): Observable<User> {
-    return this.httpClient.post<User>(`${this.rootURL}/users`, { email, password }).pipe(
+    return this.httpClient.post<User>(`${this.rootURL}/users`, { email: email, password: password }).pipe(
       shareReplay(),
       tap(user => {
+        localStorage.setItem(this.currUser, JSON.stringify(user));
         return this.setLoginValues(user);
       })
     );

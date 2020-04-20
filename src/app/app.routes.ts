@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SorryComponent } from './sorry/sorry.component';
 import { AuthGuardService } from './utils/auth-guard.service';
+import { LogoutGuard } from './utils/logout.guard';
 
 export const routes: Routes = [
   {
@@ -22,12 +23,13 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodoListComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, LogoutGuard],
     // children paths added for Step 19
     children: [
       {
         path: ':id',
-        component: ToDoNotesComponent
+        component: ToDoNotesComponent,
+        canActivate: [LogoutGuard]
       },
       // Added for Step 20
       { path: ':id/edit', component: TodoEditComponent }
@@ -36,15 +38,17 @@ export const routes: Routes = [
   {
     path: 'all-tasks',
     component: AllTasksComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService, LogoutGuard]
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
+    canActivate: [LogoutGuard]
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    canActivate: [LogoutGuard]
   },
   // The next three paths were added for Step 22
   {
@@ -56,11 +60,13 @@ export const routes: Routes = [
   // Added for Step 16
   {
     path: 'lifecyclecontainer',
-    component: LifeCycleContainerComponent
+    component: LifeCycleContainerComponent,
+    canActivate: [LogoutGuard]
   },
   {
     path: 'not-found',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
+    canActivate: [LogoutGuard]
   },
   {
     path: '**', // This allows for unaccounted-for routes
