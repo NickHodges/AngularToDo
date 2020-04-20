@@ -50,4 +50,6 @@ export class AuthenticationService {
     localStorage.removeItem('token');
     this.loggedIn.next(false);
   }
+
+  register(email: string, password: string): Observable<User> {}
 }
