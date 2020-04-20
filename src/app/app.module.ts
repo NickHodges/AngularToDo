@@ -36,7 +36,7 @@ import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { JwtInterceptor } from './utils/jwt.interceptor';
-import { AuthGuardService } from './utils/auth-guard.service';
+import { AuthGuardService } from './utils/auth.guard';
 
 @NgModule({
   declarations: [

@@ -11,7 +11,7 @@ import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { SorryComponent } from './sorry/sorry.component';
-import { AuthGuardService } from './utils/auth-guard.service';
+import { AuthGuardService } from './utils/auth.guard';
 import { LogoutGuard } from './utils/logout.guard';
 
 export const routes: Routes = [
@@ -28,8 +28,7 @@ export const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: ToDoNotesComponent,
-        canActivate: [LogoutGuard]
+        component: ToDoNotesComponent
       },
       // Added for Step 20
       { path: ':id/edit', component: TodoEditComponent }

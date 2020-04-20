@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { User } from '../models/user';
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  private loggedIn = new BehaviorSubject<boolean>(this.tokenIsValid());
   private rootURL: string = 'https://localhost:3000';
   private currUser: string = 'currentUser';
 
@@ -18,15 +19,36 @@ export class AuthenticationService {
   }
 
   public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
-
-  private tokenAvailable(): boolean {
-    return !!localStorage.getItem(this.currUser);
+    if (this.currentUserSubject) {
+      return this.currentUserSubject.value;
+    } else {
+      return null;
+    }
   }
 
   get isLoggedIn(): Observable<boolean> {
+    this.loggedIn.next(this.tokenIsValid());
     return this.loggedIn.asObservable();
+  }
+
+  private tokenIsValid(): boolean {
+    let currentUser: User = this.currentUserValue;
+    if (currentUser) {
+      const token = currentUser.token;
+      const tokenInfo = this.getDecodedAccessToken(token);
+      if (Date.now() <= tokenInfo.exp * 1000) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 
   private setLoginValues(user: User) {
