@@ -1,74 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../models/user';
-import { shareReplay, tap, filter, map } from 'rxjs/operators';
 
-export const UNDEFINED_USER: User = {
-  id: '',
-  password: '',
-  email: ''
-};
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
   private rootURL: string = 'https://localhost:3000';
 
-  private subject = new BehaviorSubject<User>(undefined);
-
-  user$: Observable<User> = this.subject.asObservable().pipe(filter(user => !!user));
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
-  //isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
-  //isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
-
   constructor(private httpClient: HttpClient) {
-    httpClient.get<User>(`${this.rootURL}/user`).subscribe(user => {
-      return this.subject.next(user ? user : UNDEFINED_USER);
-    });
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
   }
 
   private tokenAvailable(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  register(email: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}/users`, { email, password }).pipe(
-      shareReplay(),
-      tap(user => {
-        return this.setLoginValues(user);
-      })
-    );
-  }
-
-  private setLoginValues(user: User) {
-    localStorage.setItem('token', 'Here is a token!');
-    this.loggedIn.next(true);
-    return this.subject.next(user);
-  }
-
-  login(email: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}/login`, { email, password }).pipe(
-      shareReplay(),
-      tap(user => {
-        return this.setLoginValues(user);
-      })
-    );
-  }
-
-  get isUserLoggedIn(): Observable<boolean> {
+  get isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
 
-  logout(): Observable<any> {
-    return this.httpClient.post(`${this.rootURL}/logout`, null).pipe(
-      shareReplay(),
-      tap(user => {
-        localStorage.removeItem('token');
-        this.loggedIn.next(false);
-        return this.subject.next(UNDEFINED_USER);
+  login(username: string, password: string) {
+    return this.httpClient.post<User>(`${this.rootURL}/login`, { email: username, password: password }).pipe(
+      map(user => {
+        if (user) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUserSubject.next(user);
+          this.loggedIn.next(true);
+          localStorage.setItem('token', 'Here is a token!');
+          return user;
+        } else {
+          this.loggedIn.next(false);
+        }
       })
     );
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+    localStorage.removeItem('token');
+    this.loggedIn.next(false);
   }
 }

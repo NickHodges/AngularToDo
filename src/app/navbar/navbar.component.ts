@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { AuthenticationService } from '../utils/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -12,17 +12,16 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;
-  isLoggedOut: boolean;
-
   constructor(public authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit() {
-    this.isLoggedIn$ = this.authService.isUserLoggedIn;
+  ngOnInit() {}
+
+  public get isLoggedIn(): Observable<boolean> {
+    return this.authService.isLoggedIn;
   }
 
   logout() {
-    this.authService.logout().subscribe(() => {});
-    this.router.navigate(['../login'], { relativeTo: this.route });
+    this.authService.logout();
+    this.router.navigate(['./login'], { relativeTo: this.route });
   }
 }

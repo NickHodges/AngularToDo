@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../utils/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -26,14 +27,18 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
 
     if (val.password && val.email) {
-      this.authService.login(val.email, val.password).subscribe(
-        () => {
-          this.router.navigate(['../todos'], { relativeTo: this.route });
-        },
-        response => {
-          this.errorMessage = response.error.message;
-        }
-      );
+      this.authService
+        .login(val.email, val.password)
+        .pipe(first())
+        .subscribe(
+          () => {
+            this.router.navigate(['/todos'], { relativeTo: this.route });
+          },
+          err => {
+            this.errorMessage = err;
+            this.authService.logout();
+          }
+        );
     }
   }
 }
