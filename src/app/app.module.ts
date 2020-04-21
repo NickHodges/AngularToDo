@@ -34,7 +34,6 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './utils/authentication.service';
 import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
-import { ErrorInterceptor } from './utils/error.interceptor';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AuthGuardService } from './utils/auth.guard';
 
@@ -97,7 +96,6 @@ import { AuthGuardService } from './utils/auth.guard';
       multi: true
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AuthGuardService,
     LogoutGuard
   ],
