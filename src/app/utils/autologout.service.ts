@@ -1,3 +1,5 @@
+// Taken from: https://stackblitz.com/edit/angular-auto-logout-v2?file=src%2Fapp%2Fautologout.service.ts
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
@@ -17,12 +19,12 @@ export class AutoLogoutService {
 
   constructor(private router: Router, private authService: AuthenticationService) {
     this.check();
-    this.initListener();
+    this.initEventListeners();
     this.initInterval();
-    localStorage.setItem(STORE_KEY, Date.now().toString());
+    this.setLastAction(Date.now());
   }
 
-  initListener() {
+  initEventListeners() {
     document.body.addEventListener('click', () => this.reset());
     document.body.addEventListener('mouseover', () => this.reset());
     document.body.addEventListener('mouseout', () => this.reset());
@@ -55,6 +57,6 @@ export class AutoLogoutService {
     }
   }
   storageEvt() {
-    console.log('Event!');
+    console.log('Storage event!');
   }
 }
