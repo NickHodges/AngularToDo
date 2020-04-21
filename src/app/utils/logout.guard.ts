@@ -17,7 +17,6 @@ export class LogoutGuard implements CanActivate, CanLoad {
       const tokenInfo = this.getDecodedAccessToken(token);
       if (tokenInfo) {
         if (Date.now() >= tokenInfo.exp * 1000) {
-          console.log('Logging you out!');
           this.authenticationService.logout();
         }
       }
