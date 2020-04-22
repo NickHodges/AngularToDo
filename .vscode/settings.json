@@ -1,4 +1,18 @@
 {
   "scm.alwaysShowActions": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#814ca2",
+    "activityBar.activeBorder": "#41341f",
+    "activityBar.background": "#814ca2",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#41341f",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#653c7f",
+    "statusBar.border": "#653c7f",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#814ca2"
+  },
+  "peacock.color": "#653c7f"
 }
