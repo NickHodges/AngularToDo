@@ -3,9 +3,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
+
 const MINUTES_UNITL_AUTO_LOGOUT = 0.2; // in mins
 const CHECK_INTERVAL = 5000; // in ms
 const STORE_KEY = 'lastAction';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -45,8 +47,8 @@ export class AutoLogoutService {
 
   private checkIfTimedOut() {
     const now = Date.now();
-    const timeleft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
-    const diff = timeleft - now;
+    const timeLeft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
+    const diff = timeLeft - now;
     const isTimeout = diff < 0;
 
     if (isTimeout) {
