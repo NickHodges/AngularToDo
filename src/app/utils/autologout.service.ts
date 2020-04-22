@@ -10,53 +10,53 @@ const STORE_KEY = 'lastAction';
   providedIn: 'root'
 })
 export class AutoLogoutService {
-  public getLastAction() {
-    return parseInt(localStorage.getItem(STORE_KEY));
-  }
-  public setLastAction(lastAction: number) {
-    localStorage.setItem(STORE_KEY, lastAction.toString());
-  }
-
   constructor(private router: Router, private authService: AuthenticationService) {
-    this.check();
+    this.checkIfTimedOut();
     this.initEventListeners();
     this.initInterval();
     this.setLastAction(Date.now());
   }
 
-  initEventListeners() {
+  private getLastAction() {
+    return parseInt(localStorage.getItem(STORE_KEY));
+  }
+  private setLastAction(lastAction: number) {
+    localStorage.setItem(STORE_KEY, lastAction.toString());
+  }
+
+  private initEventListeners() {
     document.body.addEventListener('click', () => this.reset());
     document.body.addEventListener('mouseover', () => this.reset());
     document.body.addEventListener('mouseout', () => this.reset());
     document.body.addEventListener('keydown', () => this.reset());
     document.body.addEventListener('keyup', () => this.reset());
     document.body.addEventListener('keypress', () => this.reset());
-    window.addEventListener('storage', () => this.storageEvt());
   }
 
-  reset() {
+  private reset() {
     this.setLastAction(Date.now());
   }
 
-  initInterval() {
+  private initInterval() {
     setInterval(() => {
-      this.check();
+      this.checkIfTimedOut();
     }, CHECK_INTERVAL);
   }
 
-  check() {
+  private checkIfTimedOut() {
     const now = Date.now();
     const timeleft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
     const diff = timeleft - now;
     const isTimeout = diff < 0;
 
     if (isTimeout) {
-      localStorage.removeItem(STORE_KEY);
-      this.authService.logout();
-      this.router.navigate(['/login']);
+      this.logoutTheUser();
     }
   }
-  storageEvt() {
-    console.log('Storage event!');
+
+  private logoutTheUser() {
+    localStorage.removeItem(STORE_KEY);
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
