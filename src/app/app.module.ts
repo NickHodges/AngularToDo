@@ -1,8 +1,7 @@
-import { LogoutGuard } from './utils/logout.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,12 +28,8 @@ import { StoreModule } from '@ngrx/store';
 import { nameReducer } from './utils/name.reducer';
 import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './utils/authentication.service';
-import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
-import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AuthGuardService } from './utils/auth.guard';
 
 @NgModule({
@@ -71,8 +66,6 @@ import { AuthGuardService } from './utils/auth.guard';
     ShowNameComponent,
     NameManagerComponent,
     // Added for Step 22
-    LoginComponent,
-    RegisterComponent,
     SorryComponent
   ],
   imports: [
@@ -87,18 +80,7 @@ import { AuthGuardService } from './utils/auth.guard';
     StoreModule.forRoot({ name: nameReducer })
   ],
   // Added for Step 5
-  providers: [
-    TodoDataService,
-    AuthenticationService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: EnsureCredentialsInterceptor,
-      multi: true
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    AuthGuardService,
-    LogoutGuard
-  ],
+  providers: [TodoDataService, AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
