@@ -8,11 +8,8 @@ import { LifeCycleContainerComponent } from './life-cycle-container/life-cycle-c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
 import { SorryComponent } from './sorry/sorry.component';
 import { AuthGuardService } from './utils/auth.guard';
-import { LogoutGuard } from './utils/logout.guard';
 
 export const routes: Routes = [
   {
@@ -23,7 +20,7 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodoListComponent,
-    canActivate: [AuthGuardService, LogoutGuard],
+    canActivate: [AuthGuardService],
     // children paths added for Step 19
     children: [
       {
@@ -37,35 +34,26 @@ export const routes: Routes = [
   {
     path: 'all-tasks',
     component: AllTasksComponent,
-    canActivate: [AuthGuardService, LogoutGuard]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'about',
-    component: AboutComponent,
-    canActivate: [LogoutGuard]
+    component: AboutComponent
   },
   {
     path: 'contact',
-    component: ContactComponent,
-    canActivate: [LogoutGuard]
+    component: ContactComponent
   },
   // The next three paths were added for Step 22
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  { path: 'login', component: LoginComponent },
   { path: 'sorry', component: SorryComponent },
   // Added for Step 16
   {
     path: 'lifecyclecontainer',
-    component: LifeCycleContainerComponent,
-    canActivate: [LogoutGuard]
+    component: LifeCycleContainerComponent
   },
   {
     path: 'not-found',
-    component: PageNotFoundComponent,
-    canActivate: [LogoutGuard]
+    component: PageNotFoundComponent
   },
   {
     path: '**', // This allows for unaccounted-for routes

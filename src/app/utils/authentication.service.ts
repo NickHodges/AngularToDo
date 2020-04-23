@@ -1,90 +1,75 @@
 import { Injectable } from '@angular/core';
+import * as auth0 from 'auth0-js';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import { User } from '../models/user';
-import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
 
+const AUTH_CONFIG = {
+  clientId: '6fYtHlaqm2qm6Gwsr4QTbSkZZEfCZzyU',
+  domain: 'a4rb.auth0.com',
+  responseType: 'token id_token',
+  redirectUri: 'https://localhost:4200/contact'
+};
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenIsValid());
-  private rootURL: string = 'https://localhost:3000';
-  private currUser: string = 'currentUser';
+  myAuth0 = new auth0.WebAuth({
+    clientID: AUTH_CONFIG.clientId,
+    domain: AUTH_CONFIG.domain,
+    responseType: AUTH_CONFIG.responseType,
+    redirectUri: AUTH_CONFIG.redirectUri
+  });
 
-  constructor(private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(this.currUser)));
-    this.currentUser = this.currentUserSubject.asObservable();
+  private loggedIn = new BehaviorSubject<boolean>(this.tokenIsValid());
+
+  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  private tokenIsValid(): boolean {
+    const token: string = localStorage.getItem('id_token');
+    return !!token;
   }
 
-  public get currentUserValue(): User {
-    if (this.currentUserSubject) {
-      return this.currentUserSubject.value;
-    } else {
-      return null;
-    }
+  login() {
+    this.myAuth0.authorize();
+  }
+
+  register() {}
+
+  retrieveAuthInfoFromUrl() {
+    this.myAuth0.parseHash((err, authResult) => {
+      if (err) {
+        console.log('Could not parse the hash: ', err);
+      } else {
+        if (authResult && authResult.idToken) {
+          console.log('Authentication Successful. authResult: ', authResult);
+          this.setSession(authResult);
+          this.loggedIn.next(true);
+        }
+      }
+    });
+  }
+
+  setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn, 'second');
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
+  }
+
+  logout() {
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('id_token');
+    this.loggedIn.next(false);
+    this.router.navigate(['/contact']);
   }
 
   get isLoggedIn(): Observable<boolean> {
     this.loggedIn.next(this.tokenIsValid());
     return this.loggedIn.asObservable();
-  }
-
-  private tokenIsValid(): boolean {
-    let currentUser: User = this.currentUserValue;
-    if (currentUser) {
-      const token = currentUser.token;
-      const tokenInfo = this.getDecodedAccessToken(token);
-      if (tokenInfo) {
-        if (Date.now() <= tokenInfo.exp * 1000) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  private getDecodedAccessToken(token: string): any {
-    try {
-      return jwt_decode(token);
-    } catch (Error) {
-      return null;
-    }
-  }
-
-  private setLoginValues(user: User) {
-    this.loggedIn.next(true);
-    return this.currentUserSubject.next(user);
-  }
-
-  login(email: string, password: string) {
-    return this.httpClient.post<User>(`${this.rootURL}/login`, { email: email, password: password }).pipe(
-      map(user => {
-        if (user) {
-          localStorage.setItem(this.currUser, JSON.stringify(user));
-          this.setLoginValues(user);
-          return user;
-        } else {
-          this.loggedIn.next(false);
-        }
-      })
-    );
-  }
-
-  logout() {
-    localStorage.removeItem(this.currUser);
-    this.currentUserSubject.next(null);
-    this.loggedIn.next(false);
-  }
-
-  register(email: string, password: string): Observable<User> {
-    return this.httpClient.post<User>(`${this.rootURL}/users`, { email: email, password: password }).pipe(
-      shareReplay(),
-      tap(user => {
-        localStorage.setItem(this.currUser, JSON.stringify(user));
-        return this.setLoginValues(user);
-      })
-    );
   }
 }

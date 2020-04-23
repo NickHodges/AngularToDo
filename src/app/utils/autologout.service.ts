@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 
-const MINUTES_UNITL_AUTO_LOGOUT = 0.2; // in mins
+const MINUTES_UNITL_AUTO_LOGOUT = 10; // in mins
 const CHECK_INTERVAL = 5000; // in ms
 const STORE_KEY = 'lastAction';
 
