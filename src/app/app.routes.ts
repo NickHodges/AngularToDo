@@ -9,7 +9,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { SorryComponent } from './sorry/sorry.component';
-import { AuthGuardService } from './utils/auth.guard';
+import { AuthGuard } from './utils/auth.guard';
+import { CallbackComponent } from './callback/callback.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodoListComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
     // children paths added for Step 19
     children: [
       {
@@ -34,7 +35,7 @@ export const routes: Routes = [
   {
     path: 'all-tasks',
     component: AllTasksComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuard]
   },
   {
     path: 'about',
@@ -43,6 +44,10 @@ export const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'callback',
+    component: CallbackComponent
   },
   // The next three paths were added for Step 22
   { path: 'sorry', component: SorryComponent },

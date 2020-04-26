@@ -30,8 +30,9 @@ import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
 import { AuthenticationService } from './utils/authentication.service';
 import { SorryComponent } from './sorry/sorry.component';
-import { AuthGuardService } from './utils/auth.guard';
+import { AuthGuard } from './utils/auth.guard';
 import { AuthInterceptor } from './utils/auth.interceptor';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     ShowNameComponent,
     NameManagerComponent,
     // Added for Step 22
-    SorryComponent
+    SorryComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     StoreModule.forRoot({ name: nameReducer })
   ],
   // Added for Step 5
-  providers: [TodoDataService, AuthenticationService, AuthGuardService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [TodoDataService, AuthenticationService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

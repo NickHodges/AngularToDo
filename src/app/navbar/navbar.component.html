@@ -14,10 +14,10 @@
         <a class="nav-item nav-link" routerLink="/about">About</a>
       </div>
       <!-- Added for Step 22 -->
-      <div class="navbar-nav" *ngIf="(authService.isLoggedIn | async) === true">
+      <div class="navbar-nav" *ngIf="authService.isLoggedIn">
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
       </div>
-      <div class="navbar-nav" *ngIf="(authService.isLoggedIn | async) === false">
+      <div class="navbar-nav" *ngIf="!authService.isLoggedIn">
         <a class="nav-item nav-link" (click)="login()">Login</a>
       </div>
     </div>

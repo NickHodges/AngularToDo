@@ -13,10 +13,11 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthenticationService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.authService.retrieveAuthInfoFromUrl();
+    this.authService.handleLoginCallback();
   }
 
   login() {
+    console.log('logging in........');
     this.authService.login();
   }
 

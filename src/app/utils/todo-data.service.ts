@@ -1,8 +1,9 @@
 // This file was added in Step 5
 import { Observable } from 'rxjs';
 import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Todo } from '../models/todo';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable() // Injectable needed here because we are injecting into this service
 export class TodoDataService {
@@ -10,23 +11,29 @@ export class TodoDataService {
   private rootURL: string = 'https://localhost:3000/todos';
 
   // Built-in dependency injection
-  constructor(private aHttpService: HttpClient) {}
+  constructor(private aHttpService: HttpClient, private authService: AuthenticationService) {}
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
+    });
   }
 
   // Added for Step 7
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=true`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=true`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
+    });
   }
 
   // Added for Step 7
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=false`);
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=false`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
+    }   );
   }
 
   // Added for Step 8

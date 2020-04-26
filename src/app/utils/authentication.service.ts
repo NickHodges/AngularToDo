@@ -4,72 +4,88 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
 
-const AUTH_CONFIG = {
-  clientId: '6fYtHlaqm2qm6Gwsr4QTbSkZZEfCZzyU',
-  domain: 'a4rb.auth0.com',
-  responseType: 'token id_token',
-  redirectUri: 'https://localhost:4200/contact'
-};
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   myAuth0 = new auth0.WebAuth({
-    clientID: AUTH_CONFIG.clientId,
-    domain: AUTH_CONFIG.domain,
-    responseType: AUTH_CONFIG.responseType,
-    redirectUri: AUTH_CONFIG.redirectUri
+    clientID: environment.auth.clientID,
+    domain: environment.auth.domain,
+    responseType: 'token',
+    redirectUri: environment.auth.redirect,
+    audience: environment.auth.audience,
+    scope: environment.auth.scope
   });
+  // Store authentication data
+  expiresAt: number;
+  userProfile: any;
+  accessToken: string;
+  authenticated: boolean;
 
-  private loggedIn = new BehaviorSubject<boolean>(this.tokenIsValid());
-
-  constructor(private httpClient: HttpClient, private router: Router) {}
-
-  private tokenIsValid(): boolean {
-    const token: string = localStorage.getItem('id_token');
-    return !!token;
+  constructor(private router: Router) {
+    this.getAccessToken();
   }
 
   login() {
+    // Auth0 authorize request
+    console.log('About to authorize...');
     this.myAuth0.authorize();
   }
 
-  register() {}
-
-  retrieveAuthInfoFromUrl() {
+  handleLoginCallback() {
+    // When Auth0 hash parsed, get profile
     this.myAuth0.parseHash((err, authResult) => {
-      if (err) {
-        console.log('Could not parse the hash: ', err);
-      } else {
-        if (authResult && authResult.idToken) {
-          console.log('Authentication Successful. authResult: ', authResult);
-          this.setSession(authResult);
-          this.loggedIn.next(true);
-        }
+      console.log('handleLoginCallback: ', authResult);
+      if (authResult && authResult.accessToken) {
+        window.location.hash = '';
+        this.getUserInfo(authResult);
+      } else if (err) {
+        console.error(`Error: ${err.error}`);
+      }
+      this.router.navigate(['/about']);
+    });
+  }
+
+  getAccessToken() {
+    this.myAuth0.checkSession({}, (err, authResult) => {
+      console.log('getAccessToken: ', authResult);
+      if (authResult && authResult.accessToken) {
+        this.getUserInfo(authResult);
       }
     });
   }
 
-  setSession(authResult) {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+  getUserInfo(authResult) {
+    // Use access token to retrieve user's profile and set session
+    this.myAuth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      if (profile) {
+        this._setSession(authResult, profile);
+      }
+    });
   }
 
-  getExpiration() {
-    const expiration = localStorage.getItem('expires_at');
-    const expiresAt = JSON.parse(expiration);
-    return moment(expiresAt);
+  private _setSession(authResult, profile) {
+    // Save authentication data and update login status subject
+    console.log('Setting session...');
+    this.expiresAt = authResult.expiresIn * 1000 + Date.now();
+    this.accessToken = authResult.accessToken;
+    this.userProfile = profile;
+    this.authenticated = true;
   }
 
   logout() {
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('id_token');
-    this.loggedIn.next(false);
-    this.router.navigate(['/contact']);
+    // Log out of Auth0 session
+    // Ensure that returnTo URL is specified in Auth0
+    // Application settings for Allowed Logout URLs
+    this.myAuth0.logout({
+      returnTo: 'https://localhost:4200/contact',
+      clientID: environment.auth.clientID
+    });
   }
 
-  get isLoggedIn(): Observable<boolean> {
-    this.loggedIn.next(this.tokenIsValid());
-    return this.loggedIn.asObservable();
+  get isLoggedIn(): boolean {
+    // Check if current date is before token
+    // expiration and user is signed in locally
+    return Date.now() < this.expiresAt && this.authenticated;
   }
 }
