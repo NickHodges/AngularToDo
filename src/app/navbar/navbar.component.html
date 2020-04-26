@@ -19,7 +19,6 @@
       </div>
       <div class="navbar-nav" *ngIf="(authService.isLoggedIn | async) === false">
         <a class="nav-item nav-link" (click)="login()">Login</a>
-        <a class="nav-item nav-link" style="cursor: pointer;" routerLink="/register">Register</a>
       </div>
     </div>
   </nav>
