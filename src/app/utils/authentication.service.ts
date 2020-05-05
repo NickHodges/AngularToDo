@@ -78,7 +78,7 @@ export class AuthenticationService {
     // Ensure that returnTo URL is specified in Auth0
     // Application settings for Allowed Logout URLs
     this.myAuth0.logout({
-      returnTo: 'https://localhost:4200/contact',
+      returnTo: 'https://localhost:4200/',
       clientID: environment.auth.clientID
     });
   }

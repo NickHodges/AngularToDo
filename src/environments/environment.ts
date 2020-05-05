@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   auth: {
-    clientID: '6fYtHlaqm2qm6Gwsr4QTbSkZZEfCZzyU',
+    clientID: 'YCprbyw8Ky75qishq2L10GjnosLRdaC7',
     domain: 'a4rb.auth0.com',
-    audience: 'NickWasHere',
+    audience: 'https://localhost:3000',
     redirect: 'https://localhost:4200/callback',
     scope: 'openid profile email'
   }
