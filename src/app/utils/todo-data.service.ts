@@ -15,25 +15,19 @@ export class TodoDataService {
 
   // Read/Get All todos
   getAllTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
-    });
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}`);
   }
 
   // Added for Step 7
   // Get all completed tasks
   completedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=true`, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
-    });
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=true`);
   }
 
   // Added for Step 7
   // Get all incomplete tasks
   incompletedTodos(): Observable<Array<Todo>> {
-    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=false`, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.accessToken}`)
-    }   );
+    return this.aHttpService.get<Array<Todo>>(`${this.rootURL}/complete?iscomplete=false`);
   }
 
   // Added for Step 8

@@ -31,7 +31,7 @@ import { NameManagerComponent } from './name-manager/name-manager.component';
 import { AuthenticationService } from './utils/authentication.service';
 import { SorryComponent } from './sorry/sorry.component';
 import { AuthGuard } from './utils/auth.guard';
-import { AuthInterceptor } from './utils/auth.interceptor';
+import { TokenInterceptor } from './utils/auth.interceptor';
 import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
@@ -83,7 +83,7 @@ import { CallbackComponent } from './callback/callback.component';
     StoreModule.forRoot({ name: nameReducer })
   ],
   // Added for Step 5
-  providers: [TodoDataService, AuthenticationService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [TodoDataService, AuthenticationService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
