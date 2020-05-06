@@ -1,9 +1,9 @@
 {
-  "name": "philly-cctodo",
+  "name": "angular-for-rank-beginners",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true --ssl-key /node_modules/browser-sync/lib/server/certs/server.key --ssl-cert /node_modules/browser-sync/lib/server/certs/server.crt",
+    "start": "ng serve --ssl true --ssl-key ./Nicklocalhost.key --ssl-cert ./Nicklocalhost.crt",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
