@@ -43,5 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 .vscode/settings.json
-Nicklocalhost.key
-Nicklocalhost.crt
+src/Nicklocalhost.crt
+src/Nicklocalhost.key
