@@ -74,7 +74,7 @@ import { CallbackComponent } from './callback/callback.component';
   imports: [
     BrowserModule,
     // Added for Step 5
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
