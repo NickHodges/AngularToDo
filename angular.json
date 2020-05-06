@@ -55,7 +55,8 @@
             "browserTarget": "NickTodo:build",
             "sslKey": "./Nicklocalhost.key",
             "sslCert": "./Nicklocalhost.crt",
-            "ssl": true
+            "ssl": true,
+            "proxyConfig": "proxy.json"
           },
           "configurations": {
             "production": {
