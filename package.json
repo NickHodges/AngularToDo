@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^9.1.9",
     "@angular/platform-browser-dynamic": "^9.1.9",
     "@angular/router": "^9.1.9",
-    "@ngrx/store": "^8.6.0",
+    "@ngrx/store": "^9.1.2",
     "core-js": "^3.2.1",
     "npm-merge-driver": "^2.3.5",
     "rxjs": "^6.5.3",
