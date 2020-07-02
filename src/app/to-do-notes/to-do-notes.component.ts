@@ -33,6 +33,6 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
 
   onEditNote() {
     //this.router.navigate(['edit'], { relativeTo: this.route });
-    this.router.navigate(['../', this._id, 'edit'], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 }
