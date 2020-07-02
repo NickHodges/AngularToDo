@@ -44,13 +44,13 @@ export class TodoDataService {
 
   // Added for Step 9
   // Update/Put todo
-  updateTodoById(id: string, newTodo: Todo): Observable<Todo> {
+  updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
     return this.aHttpService.put<Todo>(`${this.rootURL}/${id}`, newTodo);
   }
 
   // Added for Step 11
   // Delete todo
-  deleteTodoById(id: string): Observable<Todo> {
+  deleteTodoById(id: number): Observable<Todo> {
     return this.aHttpService.delete<Todo>(`${this.rootURL}/${id}`);
   }
 }
