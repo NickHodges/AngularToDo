@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./to-do-notes.component.css']
 })
 export class ToDoNotesComponent implements OnInit, OnDestroy {
-  _id: string;
+  id: string;
   todo: Todo;
   subscription: Subscription;
 
@@ -20,8 +20,8 @@ export class ToDoNotesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
-      this._id = params['id'];
-      this.subscription = this.todoDataService.getTodoById(this._id).subscribe((aTodo: Todo) => {
+      this.id = params['id'];
+      this.subscription = this.todoDataService.getTodoById(this.id).subscribe((aTodo: Todo) => {
         this.todo = aTodo;
       });
     });
