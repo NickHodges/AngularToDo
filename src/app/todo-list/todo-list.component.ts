@@ -50,7 +50,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   makeComplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo._id === val._id);
+        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
       })
@@ -61,7 +61,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   makeIncomplete(todo: Todo) {
     this.subscriptions.add(
       this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.completetodos.findIndex(thetodo => thetodo._id === val._id);
+        const index = this.completetodos.findIndex(thetodo => thetodo.id === val.id);
         this.completetodos.splice(index, 1);
         this.incompletetodos.push(val);
       })
@@ -70,8 +70,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   // Added for Step 11
   removeTodo(todo: Todo) {
-    this.todoDataService.deleteTodoById(todo._id).subscribe(val => {
-      const index = this.incompletetodos.findIndex(thetodo => thetodo._id === todo._id);
+    this.todoDataService.deleteTodoById(todo.id).subscribe(val => {
+      const index = this.incompletetodos.findIndex(thetodo => thetodo.id === todo.id);
       this.incompletetodos.splice(index, 1);
     });
   } // Added for Step 12
@@ -84,8 +84,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     todo.title = editInput.value;
     todo.editMode = false;
     this.subscriptions.add(
-      this.todoDataService.updateTodoById(todo._id, todo).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo._id === val._id);
+      this.todoDataService.updateTodoById(todo.id, todo).subscribe(val => {
+        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
         this.incompletetodos[index] = todo;
       })
     );
