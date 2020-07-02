@@ -41,7 +41,7 @@ export class TodoDataService {
     todo.complete = !todo.complete;
     return this.updateTodoById(todo.id, todo);
   }
-
+  
   // Added for Step 9
   // Update/Put todo
   updateTodoById(id: number, newTodo: Todo): Observable<Todo> {
