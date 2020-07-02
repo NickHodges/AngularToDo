@@ -93,7 +93,7 @@
 ### Changes
 
 - Added completed/incompleted methods to Todo page and to DataService
-- Use of *ngIf
+- Use of \*ngIf
 - Updated HTML to display Todos
 - Subscription to track Observables
 
@@ -230,7 +230,7 @@
 
 - Add ability to display note.
 - Illustrate child routes
-- Create new componennt to handle displaying note
+- Create new component to handle displaying note
 
 ### Changes
 
