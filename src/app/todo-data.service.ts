@@ -39,7 +39,7 @@ export class TodoDataService {
   // Complete function
   toggleTodoComplete(todo: Todo): Observable<Todo> {
     todo.complete = !todo.complete;
-    return this.updateTodoById(todo._id, todo);
+    return this.updateTodoById(todo.id, todo);
   }
 
   // Added for Step 9
