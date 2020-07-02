@@ -1,6 +1,6 @@
 // Added in Step 5
 export class Todo {
-  _id: string;
+  id: number;
   title: string;
   //  note field added for Step 19
   note: string;
