@@ -11,3 +11,15 @@
 - Changed index.html to use Bootstrap
 - Added title
 - Changed to app.component.html to be basic template
+
+## Step 2
+
+### Lesson
+
+- Build a backend server with json-server
+
+### Changes
+
+- Install json-server in Heroku
+- Follow instructions at: https://github.com/jesperorb/json-server-heroku
+- It's all free.
