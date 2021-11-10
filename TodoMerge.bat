@@ -110,5 +110,13 @@ git commit -m "Automerge"
 git merge Step21
 pause
 
+git checkout Step23
+git commit -m "Automerge"
+git merge Step22
+pause
 
+git checkout Step24
+git commit -m "Automerge"
+git merge Step23
+pause
 
