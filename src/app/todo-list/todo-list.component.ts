@@ -1,15 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Todo } from '../todo';
-import { TodoDataService } from '../todo-data.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
 })
-export class TodoListComponent implements OnInit, OnDestroy {
-  constructor(private todoDataService: TodoDataService) {}
+export class TodoListComponent implements OnInit {
+  constructor() {}
 
   // Everything below is added for Step 7
   private subscriptions: Subscription = new Subscription();
