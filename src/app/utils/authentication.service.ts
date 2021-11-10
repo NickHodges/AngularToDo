@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { User } from '../models/user';
-import * as jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -60,7 +60,7 @@ export class AuthenticationService {
 
   login(email: string, password: string) {
     return this.httpClient.post<User>(`${this.rootURL}/login`, { email: email, password: password }).pipe(
-      map(user => {
+      map((user) => {
         if (user) {
           localStorage.setItem(this.currUser, JSON.stringify(user));
           this.setLoginValues(user);
@@ -81,7 +81,7 @@ export class AuthenticationService {
   register(email: string, password: string): Observable<User> {
     return this.httpClient.post<User>(`${this.rootURL}/users`, { email: email, password: password }).pipe(
       shareReplay(),
-      tap(user => {
+      tap((user) => {
         localStorage.setItem(this.currUser, JSON.stringify(user));
         return this.setLoginValues(user);
       })

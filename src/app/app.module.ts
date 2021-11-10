@@ -24,7 +24,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { GetNameComponent } from './getname/getname.component';
-import { StoreModule } from '@ngrx/store';
 import { nameReducer } from './utils/name.reducer';
 import { ShowNameComponent } from './show-name/show-name.component';
 import { NameManagerComponent } from './name-manager/name-manager.component';
@@ -35,6 +34,8 @@ import { EnsureCredentialsInterceptor } from './utils/auth.interceptor';
 import { SorryComponent } from './sorry/sorry.component';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AuthGuardService } from './utils/auth.guard';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { AuthGuardService } from './utils/auth.guard';
     FormsModule,
     ReactiveFormsModule,
     // Added for Step 21
-    StoreModule.forRoot({ name: nameReducer })
+    StoreModule.forRoot({ name: nameReducer }),
   ],
   // Added for Step 5
   providers: [
@@ -91,12 +92,12 @@ import { AuthGuardService } from './utils/auth.guard';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: EnsureCredentialsInterceptor,
-      multi: true
+      multi: true,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     AuthGuardService,
-    LogoutGuard
+    LogoutGuard,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

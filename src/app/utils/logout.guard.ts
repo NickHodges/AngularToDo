@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot } from '@angular/router';
-import * as jwt_decode from 'jwt-decode';
 import { AuthenticationService } from './authentication.service';
+import jwt_decode from 'jwt-decode';
+
 @Injectable()
 export class LogoutGuard implements CanActivate, CanLoad {
   constructor(private router: Router, private authenticationService: AuthenticationService) {}

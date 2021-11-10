@@ -1,6 +1,6 @@
 // This file is added for Step 21
 
-import { createReducer, on, Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { setName } from './name.actions';
 
 export const initialName: string = '';
