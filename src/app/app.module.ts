@@ -22,7 +22,6 @@ import { ngIfNotDirective } from './utils/ngIfNot.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToDoNotesComponent } from './to-do-notes/to-do-notes.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
-import { ScullyLibModule } from '@scullyio/ng-lib';
 import { GetNameComponent } from './getname/getname.component';
 import { StoreModule } from '@ngrx/store';
 import { nameReducer } from './utils/name.reducer';
@@ -78,7 +77,6 @@ import { CallbackComponent } from './callback/callback.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ScullyLibModule,
     // Added for Step 21
     StoreModule.forRoot({ name: nameReducer })
   ],
