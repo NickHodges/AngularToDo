@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import * as auth0 from 'auth0-js';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
+import * as auth0 from 'auth0-js';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +11,7 @@ export class AuthenticationService {
     responseType: 'token',
     redirectUri: environment.auth.redirect,
     audience: environment.auth.audience,
-    scope: environment.auth.scope
+    scope: environment.auth.scope,
   });
   // Store authentication data
   expiresAt: number;
@@ -79,7 +76,7 @@ export class AuthenticationService {
     // Application settings for Allowed Logout URLs
     this.myAuth0.logout({
       returnTo: 'https://localhost:4200/',
-      clientID: environment.auth.clientID
+      clientID: environment.auth.clientID,
     });
   }
 
