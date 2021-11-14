@@ -1,4 +1,4 @@
-# NickTodo
+# Angular for Rank Beginners
 
 ## Introduction
 
