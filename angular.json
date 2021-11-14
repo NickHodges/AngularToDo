@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "NickTodo": {
+    "a4rb": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/NickTodo",
+            "outputPath": "dist/a4rb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "NickTodo:build"
+            "browserTarget": "a4rb:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "NickTodo:build:production"
+              "browserTarget": "a4rb:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "NickTodo:build"
+            "browserTarget": "a4rb:build"
           }
         },
         "test": {
