@@ -25,11 +25,11 @@ export class TodoListComponent implements OnInit {
   }
 
   completedTodos() {
-    this.subscriptions.add(this.todoDataService.completedTodos().subscribe(todos => (this.completetodos = todos)));
+    this.subscriptions.add(this.todoDataService.completedTodos().subscribe((todos) => (this.completetodos = todos)));
   }
 
   incompletedToDos() {
-    this.subscriptions.add(this.todoDataService.incompletedTodos().subscribe(todos => (this.incompletetodos = todos)));
+    this.subscriptions.add(this.todoDataService.incompletedTodos().subscribe((todos) => (this.incompletetodos = todos)));
   }
 
   private RefreshTodos() {
@@ -39,7 +39,7 @@ export class TodoListComponent implements OnInit {
   // Added for Step 8
   onAddTodo(todo: Todo) {
     this.subscriptions.add(
-      this.todoDataService.addTodo(todo).subscribe(val => {
+      this.todoDataService.addTodo(todo).subscribe((val) => {
         this.incompletetodos.push(val);
       })
     );
@@ -48,8 +48,8 @@ export class TodoListComponent implements OnInit {
 
   makeComplete(todo: Todo) {
     this.subscriptions.add(
-      this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.incompletetodos.findIndex(thetodo => thetodo.id === val.id);
+      this.todoDataService.toggleTodoComplete(todo).subscribe((val) => {
+        const index = this.incompletetodos.findIndex((thetodo) => thetodo.id === val.id);
         this.incompletetodos.splice(index, 1);
         this.completetodos.push(val);
       })
@@ -59,10 +59,33 @@ export class TodoListComponent implements OnInit {
   // Added for Step 10
   makeIncomplete(todo: Todo) {
     this.subscriptions.add(
-      this.todoDataService.toggleTodoComplete(todo).subscribe(val => {
-        const index = this.completetodos.findIndex(thetodo => thetodo.id === val.id);
+      this.todoDataService.toggleTodoComplete(todo).subscribe((val) => {
+        const index = this.completetodos.findIndex((thetodo) => thetodo.id === val.id);
         this.completetodos.splice(index, 1);
         this.incompletetodos.push(val);
+      })
+    );
+  }
+
+  // Added for Step 11
+  removeTodo(todo: Todo) {
+    this.todoDataService.deleteTodoById(todo.id).subscribe((val) => {
+      const index = this.incompletetodos.findIndex((thetodo) => thetodo.id === todo.id);
+      this.incompletetodos.splice(index, 1);
+    });
+  } // Added for Step 12
+  editTodo(todo: Todo) {
+    todo.editMode = true;
+  }
+
+  // Added for Step 12
+  updateTodo(todo: Todo, editInput) {
+    todo.title = editInput.value;
+    todo.editMode = false;
+    this.subscriptions.add(
+      this.todoDataService.updateTodoById(todo.id, todo).subscribe((val) => {
+        const index = this.incompletetodos.findIndex((thetodo) => thetodo.id === val.id);
+        this.incompletetodos[index] = todo;
       })
     );
   }

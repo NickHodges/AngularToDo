@@ -2,6 +2,20 @@
   <h2 class="heading">
     About
   </h2>
-  <br>
-  <p>This is the about page.</p>
+  <br />
+  <!-- The following was added in Step 15 -->
+  <app-about-content>
+    <p>
+      This content will be passed to the About Page via the ng-content tag in
+      the app-about-content component.
+    </p>
+    <p>
+      This enables you to allow your component consumers to determine what
+      content and values are included in your component.
+    </p>
+    <p>You can even put other tags in here. See? {{ Stuff }}</p>
+    <h1>More Stuff You Can Do</h1>
+    <h2>This content will go into the h2 "select" section</h2>
+    <div>This text will end up in the div "select" section.</div>
+  </app-about-content>
 </div>
